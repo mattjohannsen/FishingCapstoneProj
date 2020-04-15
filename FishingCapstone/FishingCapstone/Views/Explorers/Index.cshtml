@@ -17,10 +17,10 @@
                 @Html.DisplayNameFor(model => model.IdentityUser)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ExplorerFirst)
+                @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ExplorerLast)
+                @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th></th>
         </tr>
@@ -32,10 +32,10 @@
                 @Html.DisplayFor(modelItem => item.IdentityUser.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ExplorerFirst)
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ExplorerLast)
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ExplorerId">Edit</a> |

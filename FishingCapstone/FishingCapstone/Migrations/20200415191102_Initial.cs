@@ -180,8 +180,8 @@ namespace FishingCapstone.Migrations
                     ExplorerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdentityUserId = table.Column<string>(nullable: true),
-                    ExplorerFirst = table.Column<string>(nullable: true),
-                    ExplorerLast = table.Column<string>(nullable: true)
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -197,12 +197,12 @@ namespace FishingCapstone.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "108e909c-43a7-4669-927b-c0d76cbf0ce5", "8321df18-8064-4e60-bb10-aae64cd673e2", "Admin", "ADMIN" });
+                values: new object[] { "54e96287-4329-4ed5-a712-60af834eb467", "31ba42e9-da51-442a-b584-c99ee72faef3", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "df1fce20-9735-4602-9bb0-467fc8d71f64", "26a4f926-a190-4ec1-9e58-7de50113f8a4", "Explorer", "EXPLORER" });
+                values: new object[] { "f85e49c2-a7a1-4d79-a8a1-11527eb6b730", "d94946ad-4920-48cc-ad14-2b835203d0de", "Explorer", "EXPLORER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Admin_IdentityUserId",

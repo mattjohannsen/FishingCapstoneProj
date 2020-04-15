@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishingCapstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200415124653_Initial")]
-    partial class Initial
+    [Migration("20200415202059_addedclasses")]
+    partial class addedclasses
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,14 +51,14 @@ namespace FishingCapstone.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ExplorerFirst")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExplorerLast")
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdentityUserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ExplorerId");
 
@@ -96,15 +96,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "108e909c-43a7-4669-927b-c0d76cbf0ce5",
-                            ConcurrencyStamp = "8321df18-8064-4e60-bb10-aae64cd673e2",
+                            Id = "633a0cec-322b-43fe-a459-687b4cfd78e2",
+                            ConcurrencyStamp = "7da31edf-8e89-440b-9794-ab2b9f6b5609",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "df1fce20-9735-4602-9bb0-467fc8d71f64",
-                            ConcurrencyStamp = "26a4f926-a190-4ec1-9e58-7de50113f8a4",
+                            Id = "2c3621df-5484-4117-baaa-0a1101b5ff7a",
+                            ConcurrencyStamp = "2eed6059-4743-46a1-ab6e-3782efb2d4db",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

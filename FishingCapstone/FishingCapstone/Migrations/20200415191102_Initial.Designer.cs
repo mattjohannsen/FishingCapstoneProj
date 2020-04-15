@@ -4,14 +4,16 @@ using FishingCapstone.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FishingCapstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200415191102_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,15 +96,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "633a0cec-322b-43fe-a459-687b4cfd78e2",
-                            ConcurrencyStamp = "7da31edf-8e89-440b-9794-ab2b9f6b5609",
+                            Id = "54e96287-4329-4ed5-a712-60af834eb467",
+                            ConcurrencyStamp = "31ba42e9-da51-442a-b584-c99ee72faef3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "2c3621df-5484-4117-baaa-0a1101b5ff7a",
-                            ConcurrencyStamp = "2eed6059-4743-46a1-ab6e-3782efb2d4db",
+                            Id = "f85e49c2-a7a1-4d79-a8a1-11527eb6b730",
+                            ConcurrencyStamp = "d94946ad-4920-48cc-ad14-2b835203d0de",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

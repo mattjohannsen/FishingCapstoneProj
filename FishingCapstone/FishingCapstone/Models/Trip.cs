@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace FishingCapstone.Models
+{
+    public class Trip
+    {
+        public int TripId { get; set; }
+        [ForeignKey("Explorer")]
+        public string ExplorerId { get; set; }
+        public Explorer Explorer { get; set; }
+        [ForeignKey("Destination")]
+        public string DestinationId { get; set; }
+        public Destination Destination { get; set; }
+        public string TripName { get; set; }
+        public string TripMonth { get; set; }
+        [Display(Name = "Trip Start Date")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTime? TripStart { get; set; }
+        [Display(Name = "Trip Start Date")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTime? TripEnd { get; set; }
+
+    }
+}

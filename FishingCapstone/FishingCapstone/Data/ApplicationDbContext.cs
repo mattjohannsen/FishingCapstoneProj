@@ -31,7 +31,14 @@ namespace FishingCapstone.Data
                 );
         }
         public DbSet<FishingCapstone.Models.Admin> Admin { get; set; }
-
         public DbSet<FishingCapstone.Models.Explorer> Explorer { get; set; }
+
+
+
+
+
+
+
+
     }
 }

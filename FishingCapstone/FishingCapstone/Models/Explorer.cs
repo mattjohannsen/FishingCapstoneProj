@@ -15,8 +15,9 @@ namespace FishingCapstone.Models
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }
         [Display(Name = "First Name")]
-        public string ExplorerFirst { get; set; }
+        public string FirstName
+        { get; set; }
         [Display(Name = "Last Name")]
-        public string ExplorerLast { get; set; }
+        public string LastName { get; set; }
     }
 }

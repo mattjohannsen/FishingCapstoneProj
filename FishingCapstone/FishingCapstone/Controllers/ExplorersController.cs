@@ -57,7 +57,7 @@ namespace FishingCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ExplorerId,IdentityUserId,ExplorerFirst,ExplorerLast")] Explorer explorer)
+        public async Task<IActionResult> Create([Bind("ExplorerId,IdentityUserId,FirstName,LastName")] Explorer explorer)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace FishingCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ExplorerId,IdentityUserId,ExplorerFirst,ExplorerLast")] Explorer explorer)
+        public async Task<IActionResult> Edit(int id, [Bind("ExplorerId,IdentityUserId,FirstName,LastName")] Explorer explorer)
         {
             if (id != explorer.ExplorerId)
             {
