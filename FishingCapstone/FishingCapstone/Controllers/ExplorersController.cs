@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FishingCapstone.Data;
 using FishingCapstone.Models;
+using System.Security.Claims;
 
 namespace FishingCapstone.Controllers
 {
@@ -16,14 +17,26 @@ namespace FishingCapstone.Controllers
 
         public ExplorersController(ApplicationDbContext context)
         {
+
             _context = context;
         }
 
         // GET: Explorers
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Explorer.Include(e => e.IdentityUser);
-            return View(await applicationDbContext.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentExplorer = _context.Explorer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            if (currentExplorer != null)
+            {
+                var applicationDbContext = _context.Explorer.Include(e => e.IdentityUser).Where(e => e.IdentityUser.Id == userId);
+                return View(await applicationDbContext.ToListAsync());
+            }
+            else
+            {
+                return RedirectToAction(nameof(Create));
+            }
+           
+
         }
 
         // GET: Explorers/Details/5
@@ -61,12 +74,16 @@ namespace FishingCapstone.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                explorer.IdentityUserId = userId;
                 _context.Add(explorer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", explorer.IdentityUserId);
-            return View(explorer);
+            return RedirectToAction(nameof(Index));
+            //return View(explorer);
         }
 
         // GET: Explorers/Edit/5
