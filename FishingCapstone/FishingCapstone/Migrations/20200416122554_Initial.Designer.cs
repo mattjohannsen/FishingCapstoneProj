@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishingCapstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200415202059_addedclasses")]
-    partial class addedclasses
+    [Migration("20200416122554_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,57 @@ namespace FishingCapstone.Migrations
                     b.ToTable("Admin");
                 });
 
+            modelBuilder.Entity("FishingCapstone.Models.Destination", b =>
+                {
+                    b.Property<int>("DestinationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DestinationLat")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DestinationLong")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DestinationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DestinationId");
+
+                    b.ToTable("Destination");
+
+                    b.HasData(
+                        new
+                        {
+                            DestinationId = 1,
+                            DestinationLat = "22.8822",
+                            DestinationLong = "-109.91203",
+                            DestinationName = "Cabo San Lucas, MX"
+                        },
+                        new
+                        {
+                            DestinationId = 2,
+                            DestinationLat = "20.468355",
+                            DestinationLong = "-86.978845",
+                            DestinationName = "Cozumel, MX"
+                        },
+                        new
+                        {
+                            DestinationId = 3,
+                            DestinationLat = "24.167785",
+                            DestinationLong = "-110.310101",
+                            DestinationName = "La Paz, MX"
+                        },
+                        new
+                        {
+                            DestinationId = 4,
+                            DestinationLat = "43.412800",
+                            DestinationLong = "-88.189249",
+                            DestinationName = "West Bend, WI"
+                        });
+                });
+
             modelBuilder.Entity("FishingCapstone.Models.Explorer", b =>
                 {
                     b.Property<int>("ExplorerId")
@@ -65,6 +116,259 @@ namespace FishingCapstone.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.ToTable("Explorer");
+                });
+
+            modelBuilder.Entity("FishingCapstone.Models.Month", b =>
+                {
+                    b.Property<int>("MonthId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("MonthName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MonthId");
+
+                    b.ToTable("Month");
+
+                    b.HasData(
+                        new
+                        {
+                            MonthId = 1,
+                            MonthName = "January"
+                        },
+                        new
+                        {
+                            MonthId = 2,
+                            MonthName = "February"
+                        },
+                        new
+                        {
+                            MonthId = 3,
+                            MonthName = "March"
+                        },
+                        new
+                        {
+                            MonthId = 4,
+                            MonthName = "April"
+                        },
+                        new
+                        {
+                            MonthId = 5,
+                            MonthName = "May"
+                        },
+                        new
+                        {
+                            MonthId = 6,
+                            MonthName = "June"
+                        },
+                        new
+                        {
+                            MonthId = 7,
+                            MonthName = "July"
+                        },
+                        new
+                        {
+                            MonthId = 8,
+                            MonthName = "August"
+                        },
+                        new
+                        {
+                            MonthId = 9,
+                            MonthName = "September"
+                        },
+                        new
+                        {
+                            MonthId = 10,
+                            MonthName = "October"
+                        },
+                        new
+                        {
+                            MonthId = 11,
+                            MonthName = "November"
+                        },
+                        new
+                        {
+                            MonthId = 12,
+                            MonthName = "December"
+                        });
+                });
+
+            modelBuilder.Entity("FishingCapstone.Models.Rating", b =>
+                {
+                    b.Property<int>("RatingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("RatingName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RatingNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("RatingId");
+
+                    b.ToTable("Rating");
+
+                    b.HasData(
+                        new
+                        {
+                            RatingId = 1,
+                            RatingName = "Poor",
+                            RatingNumber = 1
+                        },
+                        new
+                        {
+                            RatingId = 2,
+                            RatingName = "Fair",
+                            RatingNumber = 2
+                        },
+                        new
+                        {
+                            RatingId = 3,
+                            RatingName = "Good",
+                            RatingNumber = 3
+                        },
+                        new
+                        {
+                            RatingId = 4,
+                            RatingName = "Best",
+                            RatingNumber = 4
+                        });
+                });
+
+            modelBuilder.Entity("FishingCapstone.Models.Species", b =>
+                {
+                    b.Property<int>("SpeciesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("SpeciesName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SpeciesId");
+
+                    b.ToTable("Species");
+
+                    b.HasData(
+                        new
+                        {
+                            SpeciesId = 1,
+                            SpeciesName = "Amberjack"
+                        },
+                        new
+                        {
+                            SpeciesId = 2,
+                            SpeciesName = "Barracuda"
+                        },
+                        new
+                        {
+                            SpeciesId = 3,
+                            SpeciesName = "Bonito"
+                        },
+                        new
+                        {
+                            SpeciesId = 4,
+                            SpeciesName = "Cabrilla"
+                        },
+                        new
+                        {
+                            SpeciesId = 5,
+                            SpeciesName = "Grouper"
+                        },
+                        new
+                        {
+                            SpeciesId = 6,
+                            SpeciesName = "Jack Crevalle"
+                        },
+                        new
+                        {
+                            SpeciesId = 7,
+                            SpeciesName = "Kingfish"
+                        },
+                        new
+                        {
+                            SpeciesId = 8,
+                            SpeciesName = "Mackerel - Sierra"
+                        },
+                        new
+                        {
+                            SpeciesId = 9,
+                            SpeciesName = "Mahi Mahi - Dorado"
+                        },
+                        new
+                        {
+                            SpeciesId = 10,
+                            SpeciesName = "Marlin -Black"
+                        },
+                        new
+                        {
+                            SpeciesId = 11,
+                            SpeciesName = "Marlin - Blue"
+                        },
+                        new
+                        {
+                            SpeciesId = 12,
+                            SpeciesName = "Marlin - Striped"
+                        },
+                        new
+                        {
+                            SpeciesId = 13,
+                            SpeciesName = "Marlin - White"
+                        },
+                        new
+                        {
+                            SpeciesId = 14,
+                            SpeciesName = "Pargo - Dogtooth Snapper"
+                        },
+                        new
+                        {
+                            SpeciesId = 15,
+                            SpeciesName = "Red Snapper"
+                        },
+                        new
+                        {
+                            SpeciesId = 16,
+                            SpeciesName = "Roosterfish"
+                        },
+                        new
+                        {
+                            SpeciesId = 17,
+                            SpeciesName = "Sailfish"
+                        },
+                        new
+                        {
+                            SpeciesId = 18,
+                            SpeciesName = "Shark"
+                        },
+                        new
+                        {
+                            SpeciesId = 19,
+                            SpeciesName = "Skipjack"
+                        },
+                        new
+                        {
+                            SpeciesId = 20,
+                            SpeciesName = "Snook"
+                        },
+                        new
+                        {
+                            SpeciesId = 21,
+                            SpeciesName = "Tuna"
+                        },
+                        new
+                        {
+                            SpeciesId = 22,
+                            SpeciesName = "Wahoo"
+                        },
+                        new
+                        {
+                            SpeciesId = 23,
+                            SpeciesName = "Yellowtail"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -96,15 +400,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "633a0cec-322b-43fe-a459-687b4cfd78e2",
-                            ConcurrencyStamp = "7da31edf-8e89-440b-9794-ab2b9f6b5609",
+                            Id = "7af2f706-9fe5-417d-894a-e7b7ac23d426",
+                            ConcurrencyStamp = "35eefc61-5009-4f22-a4d7-8d99dfd0d691",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "2c3621df-5484-4117-baaa-0a1101b5ff7a",
-                            ConcurrencyStamp = "2eed6059-4743-46a1-ab6e-3782efb2d4db",
+                            Id = "aaccc599-be8a-41fd-bbd5-18051bae059a",
+                            ConcurrencyStamp = "264870c8-f5b3-45e5-8fd8-0d86efebc920",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

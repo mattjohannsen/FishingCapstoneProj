@@ -47,6 +47,61 @@ namespace FishingCapstone.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Destination",
+                columns: table => new
+                {
+                    DestinationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DestinationName = table.Column<string>(nullable: true),
+                    DestinationLat = table.Column<string>(nullable: true),
+                    DestinationLong = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Destination", x => x.DestinationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Month",
+                columns: table => new
+                {
+                    MonthId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MonthName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Month", x => x.MonthId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rating",
+                columns: table => new
+                {
+                    RatingId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RatingName = table.Column<string>(nullable: true),
+                    RatingNumber = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rating", x => x.RatingId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Species",
+                columns: table => new
+                {
+                    SpeciesId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SpeciesName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Species", x => x.SpeciesId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -197,12 +252,82 @@ namespace FishingCapstone.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "54e96287-4329-4ed5-a712-60af834eb467", "31ba42e9-da51-442a-b584-c99ee72faef3", "Admin", "ADMIN" });
+                values: new object[,]
+                {
+                    { "aaccc599-be8a-41fd-bbd5-18051bae059a", "264870c8-f5b3-45e5-8fd8-0d86efebc920", "Explorer", "EXPLORER" },
+                    { "7af2f706-9fe5-417d-894a-e7b7ac23d426", "35eefc61-5009-4f22-a4d7-8d99dfd0d691", "Admin", "ADMIN" }
+                });
 
             migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "f85e49c2-a7a1-4d79-a8a1-11527eb6b730", "d94946ad-4920-48cc-ad14-2b835203d0de", "Explorer", "EXPLORER" });
+                table: "Destination",
+                columns: new[] { "DestinationId", "DestinationLat", "DestinationLong", "DestinationName" },
+                values: new object[,]
+                {
+                    { 4, "43.412800", "-88.189249", "West Bend, WI" },
+                    { 1, "22.8822", "-109.91203", "Cabo San Lucas, MX" },
+                    { 3, "24.167785", "-110.310101", "La Paz, MX" },
+                    { 2, "20.468355", "-86.978845", "Cozumel, MX" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Month",
+                columns: new[] { "MonthId", "MonthName" },
+                values: new object[,]
+                {
+                    { 1, "January" },
+                    { 2, "February" },
+                    { 3, "March" },
+                    { 4, "April" },
+                    { 5, "May" },
+                    { 6, "June" },
+                    { 7, "July" },
+                    { 8, "August" },
+                    { 9, "September" },
+                    { 10, "October" },
+                    { 11, "November" },
+                    { 12, "December" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rating",
+                columns: new[] { "RatingId", "RatingName", "RatingNumber" },
+                values: new object[,]
+                {
+                    { 4, "Best", 4 },
+                    { 2, "Fair", 2 },
+                    { 1, "Poor", 1 },
+                    { 3, "Good", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Species",
+                columns: new[] { "SpeciesId", "SpeciesName" },
+                values: new object[,]
+                {
+                    { 23, "Yellowtail" },
+                    { 22, "Wahoo" },
+                    { 15, "Red Snapper" },
+                    { 21, "Tuna" },
+                    { 20, "Snook" },
+                    { 19, "Skipjack" },
+                    { 18, "Shark" },
+                    { 17, "Sailfish" },
+                    { 16, "Roosterfish" },
+                    { 14, "Pargo - Dogtooth Snapper" },
+                    { 5, "Grouper" },
+                    { 12, "Marlin - Striped" },
+                    { 11, "Marlin - Blue" },
+                    { 10, "Marlin -Black" },
+                    { 9, "Mahi Mahi - Dorado" },
+                    { 8, "Mackerel - Sierra" },
+                    { 7, "Kingfish" },
+                    { 6, "Jack Crevalle" },
+                    { 4, "Cabrilla" },
+                    { 2, "Barracuda" },
+                    { 1, "Amberjack" },
+                    { 13, "Marlin - White" },
+                    { 3, "Bonito" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Admin_IdentityUserId",
@@ -275,7 +400,19 @@ namespace FishingCapstone.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Destination");
+
+            migrationBuilder.DropTable(
                 name: "Explorer");
+
+            migrationBuilder.DropTable(
+                name: "Month");
+
+            migrationBuilder.DropTable(
+                name: "Rating");
+
+            migrationBuilder.DropTable(
+                name: "Species");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

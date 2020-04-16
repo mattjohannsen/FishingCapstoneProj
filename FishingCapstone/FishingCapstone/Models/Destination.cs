@@ -8,9 +8,9 @@ namespace FishingCapstone.Models
     public class Destination
     {
         public int DestinationId { get; set; }
-        public int DestinationName { get; set; }
-        public int DestinationLat { get; set; }
-        public int DestinationLong { get; set; }
+        public string DestinationName { get; set; }
+        public string DestinationLat { get; set; }
+        public string DestinationLong { get; set; }
 
     }
 }

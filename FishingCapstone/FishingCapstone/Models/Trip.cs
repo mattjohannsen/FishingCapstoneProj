@@ -11,10 +11,10 @@ namespace FishingCapstone.Models
     {
         public int TripId { get; set; }
         [ForeignKey("Explorer")]
-        public string ExplorerId { get; set; }
+        public int ExplorerId { get; set; }
         public Explorer Explorer { get; set; }
         [ForeignKey("Destination")]
-        public string DestinationId { get; set; }
+        public int DestinationId { get; set; }
         public Destination Destination { get; set; }
         public string TripName { get; set; }
         public string TripMonth { get; set; }
