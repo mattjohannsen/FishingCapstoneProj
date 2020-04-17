@@ -32,45 +32,6 @@
     </dl>
 </div>
 <div>
-    <table>
-        <tr>
-            <td>Species</td>
-            <td>January</td>
-            <td>February</td>
-            <td>March</td>
-            <td>April</td>
-            <td>May</td>
-            <td>June</td>
-            <td>July</td>
-            <td>August</td>
-            <td>September</td>
-            <td>October</td>
-            <td>November</td>
-            <td>December</td>
-        </tr>
-        @foreach (var item in Model.DSMCalender)
-        {
-    <tr>
-        <td>@item.Species.SpeciesName</td>
-        @for (int i = 1; i < 13; i++)
-        {
-            //if (item.Month.MonthId == i)
-            //{
-            <td>
-                <p>@item.Month.MonthName</p>
-                <p>@item.Rating.RatingName</p>
-            </td>
-                //continue;
-            @*}*@
-            @*<td>
-                <p>Dest: @item.Destination.DestinationName Species: @item.Species.SpeciesName Month: @item.Month.MonthName Rating: @item.Rating.RatingName i: @i</p>
-            </td>*@
-        }
-    </tr>
-        }
-    </table>
-</div>
-<div>
     <a asp-action="Edit" asp-route-id="@Model.DestinationId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
