@@ -207,14 +207,10 @@ namespace FishingCapstone.Controllers
         public List<DestSpeciesMonth> GetDSMByDestination(int id)
         {
             var destination = _context.Destination.Where(d => d.DestinationId == id);
-            //var availableSpecies = new List<Species>();
             var dsmrAvailableSpecies = new List<DestSpeciesMonth>();
-            //var totalSpecies = new List<int>();
             if (destination != null)
             {
-                //availableSpecies = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == id).Select(d => d.Species).Distinct().ToList(); //<==Working list that gives Species
                 dsmrAvailableSpecies = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == id).OrderBy(d=>d.Species.SpeciesName).ThenBy(d=>d.DSMMonthId).Select(d => d).ToList(); //<==Working list that gives Species
-                //var dsmrWithMonthRating = dsmrAvailableSpecies;
                     for (int i = 0; i < dsmrAvailableSpecies.Count; i++)
                     {
                         if (dsmrAvailableSpecies[i].Month==null)
@@ -228,16 +224,10 @@ namespace FishingCapstone.Controllers
                         dsmrAvailableSpecies[i].Rating = dsmrRating;
                         }
                     }
-
-                //availableSpecies = availableSpecies.Select(s => s.SpeciesId).Distinct();
-                //totalSpecies = _context.DestSpeciesMonth.
-                //destination.AvailableSpecies = availableSpecies;
-                //return availableSpecies;
                 return dsmrAvailableSpecies;
             }
             else
             {
-                //
                 return dsmrAvailableSpecies;
             }
         }
@@ -245,14 +235,11 @@ namespace FishingCapstone.Controllers
         {
             Calendar destCalendar = new Calendar();
             destCalendar.CalendarRows = new List<CalendarRow>();
-            string[] ratingsArray = new string[12];
             var thisDestination = _context.Destination.Where(d => d.DestinationId == destinationId).FirstOrDefault();
-
             for (int i = 0; i < speciesList.Count; i++)
             {
-
                 CalendarRow calendarRow = new CalendarRow();
-
+                string[] ratingsArray = new string[12];
                 calendarRow.Destination = thisDestination;
                 var currentSpeciesId = speciesList[i].SpeciesId;
                 var currentSpecies = _context.Species.Where(s => s.SpeciesId == currentSpeciesId).FirstOrDefault();
@@ -264,26 +251,9 @@ namespace FishingCapstone.Controllers
                     ratingsArray[j] = ratingToAdd;
                 }
                 calendarRow.MonthlyRatings = ratingsArray;
-                //thisDestination.Calendar.CalendarRows.Add(calendarRow);
                 destCalendar.CalendarRows.Add(calendarRow);
-               // thisDestination.Calendar
-                //var testvar = calendarRow;
             }
             thisDestination.Calendar = destCalendar;
-            //string[] ratingsArray = new string [12];
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == destinationId && d.DSMSpeciesId == speciesList[i].SpeciesId && d.DSMMonthId == i + 1).Select(d=>d.Rating.RatingName).FirstOrDefault();
-            //    ratingsArray[i] = ratingToAdd;
-            //    //string ratingTitle = 
-            //    //ratingsArray[i] = _context.DestSpeciesMonth.Where(d=>d.DSMDestinationId).;
-            //}
-            //string monthlyRating = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == destinationId && d.DSMSpeciesId == speciesId && d.DSMMonthId == monthlyId).Select(d=> d.Month.MonthName).FirstOrDefault();
-            //string[] ratingsArray = { };
-
-            //return monthlyRating;
-            //string teststring = "";
-
             return destCalendar;
         }
     }
