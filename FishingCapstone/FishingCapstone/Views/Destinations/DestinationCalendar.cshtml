@@ -48,25 +48,19 @@
             <td>November</td>
             <td>December</td>
         </tr>
-        @foreach (var item in Model.DSMCalender)
+        @foreach (var item in Model.Calendar.CalendarRows)
         {
-    <tr>
-        <td>@item.Species.SpeciesName</td>
-        @for (int i = 1; i < 13; i++)
-        {
-            //if (item.Month.MonthId == i)
-            //{
+        <tr>
             <td>
-                <p>@item.Month.MonthName</p>
-                <p>@item.Rating.RatingName</p>
+                <p>@item.Species.SpeciesName</p>
             </td>
-                //continue;
-            @*}*@
-            @*<td>
-                <p>Dest: @item.Destination.DestinationName Species: @item.Species.SpeciesName Month: @item.Month.MonthName Rating: @item.Rating.RatingName i: @i</p>
-            </td>*@
-        }
-    </tr>
+            @for (int i = 0; i < 12; i++)
+            {
+            <td>
+                <p>@item.MonthlyRatings[i]</p>
+            </td>
+            }
+        </tr>
         }
     </table>
 </div>

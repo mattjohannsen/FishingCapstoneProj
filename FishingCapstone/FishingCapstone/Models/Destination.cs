@@ -20,6 +20,8 @@ namespace FishingCapstone.Models
         public List<Month> Month { get; set; }
         [NotMapped]
         public List<Rating> Rating { get; set; }
+        [NotMapped]
+        public Calendar Calendar { get; set; }
 
     }
 }
