@@ -16,6 +16,10 @@ namespace FishingCapstone.Models
         public List<Species> AvailableSpecies { get; set; }
         [NotMapped]
         public List<DestSpeciesMonth> DSMCalender { get; set; }
+        [NotMapped]
+        public List<Month> Month { get; set; }
+        [NotMapped]
+        public List<Rating> Rating { get; set; }
 
     }
 }

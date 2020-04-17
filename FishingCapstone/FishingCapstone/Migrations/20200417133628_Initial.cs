@@ -294,8 +294,8 @@ namespace FishingCapstone.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "06b10079-9688-4a26-8732-308c3e611d12", "baac9e2f-883a-44b5-be3c-c75471d6b812", "Explorer", "EXPLORER" },
-                    { "6ba90541-766c-4eb9-84ea-d8b247fb47ae", "6c683892-df10-4b93-8cf3-2a21eec82056", "Admin", "ADMIN" }
+                    { "e658d2fb-26ce-4a70-a49b-06dd6160eb66", "04b517aa-5534-4ad1-be4a-6cd3086b69a8", "Explorer", "EXPLORER" },
+                    { "afd18c3e-1f3b-4f33-ac60-2debbe5cacca", "029575dd-2a3c-4d27-82e7-81c3ee057382", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(

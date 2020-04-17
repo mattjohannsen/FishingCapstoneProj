@@ -55,7 +55,15 @@
                 @for (int i = 1; i < 13; i++)
                 {
             <td>
-                <p>Month: @item.DSMMonthId Rating: @item.DSMRatingId i: @i</p>
+                @*@if (true)
+                {
+
+                }
+                else
+                {
+
+                }*@
+                <p>Dest: @item.Destination.DestinationName Species: @item.Species.SpeciesName Month: @item.Month.MonthName Rating: @item.Rating.RatingName i: @i</p>
                 @*@if (item.Month.MonthId == i)
         {
             <p>@item.Rating.RatingName</p>
