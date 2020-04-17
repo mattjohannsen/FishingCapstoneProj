@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
+    int thisMonth = DateTime.Now.Month;
 }
 
 <h1>Details</h1>
@@ -50,17 +51,26 @@
         </tr>
         @foreach (var item in Model.Calendar.CalendarRows)
         {
-        <tr>
-            <td>
-                <p>@item.Species.SpeciesName</p>
-            </td>
-            @for (int i = 0; i < 12; i++)
+    <tr>
+        <td>
+            <p>@item.Species.SpeciesName</p>
+        </td>
+        @for (int i = 0; i < 12; i++)
+        {
+            if (thisMonth == i + 1)
             {
-            <td>
-                <p>@item.MonthlyRatings[i]</p>
-            </td>
+                <td>
+                    <p><b>@item.MonthlyRatings[i]</b></p>
+                </td>
             }
-        </tr>
+            else
+            {
+                <td>
+                    <p>@item.MonthlyRatings[i]</p>
+                </td>
+            }
+        }
+    </tr>
         }
     </table>
 </div>
