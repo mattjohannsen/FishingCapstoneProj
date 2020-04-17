@@ -14,6 +14,8 @@ namespace FishingCapstone.Models
         public string DestinationLong { get; set; }
         [NotMapped]
         public List<Species> AvailableSpecies { get; set; }
+        [NotMapped]
+        public List<DestSpeciesMonth> DSMCalender { get; set; }
 
     }
 }

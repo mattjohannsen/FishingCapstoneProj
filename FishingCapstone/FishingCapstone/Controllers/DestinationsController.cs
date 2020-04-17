@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FishingCapstone.Data;
 using FishingCapstone.Models;
+using FishingCapstone.ViewModels;
 
 namespace FishingCapstone.Controllers
 {
@@ -42,6 +43,12 @@ namespace FishingCapstone.Controllers
             //int parsedId = Int32.Parse(destination.DestinationId);
             var speciesList = GetDestinationSpecies(destination.DestinationId);
             destination.AvailableSpecies = speciesList;
+            var dsmList = GetDSMByDestination(destination.DestinationId);
+            destination.DSMCalender = dsmList;
+            CalendarViewModel calendarViewModel = new CalendarViewModel();
+            calendarViewModel.Destination = destination;
+            var ratingsList = GetMonthlyRatingArray(destination.DestinationId, speciesList);
+
             return View(destination);
         }
 
@@ -159,7 +166,7 @@ namespace FishingCapstone.Controllers
             //var totalSpecies = new List<int>();
             if (destination != null)
             {
-                availableSpecies = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == id).Select(d => d.Species).Distinct().ToList();
+                availableSpecies = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == id).Select(d => d.Species).Distinct().ToList(); //<==Working list that gives Species
                 //availableSpecies = availableSpecies.Select(s => s.SpeciesId).Distinct();
                 //totalSpecies = _context.DestSpeciesMonth.
                 //destination.AvailableSpecies = availableSpecies;
@@ -173,10 +180,44 @@ namespace FishingCapstone.Controllers
             View(destination);
         }
 
-        public string GetMonthlyRating(int destinationId, int speciesId, int monthlyId)
+        public List<DestSpeciesMonth> GetDSMByDestination(int id)
         {
-            string monthlyRating = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == destinationId && d.DSMSpeciesId == speciesId && d.DSMMonthId == monthlyId).Select(d=> d.Month.MonthName).FirstOrDefault();
-            return monthlyRating;
+            var destination = _context.Destination.Where(d => d.DestinationId == id);
+            //var availableSpecies = new List<Species>();
+            var dsmrAvailableSpecies = new List<DestSpeciesMonth>();
+            //var totalSpecies = new List<int>();
+            if (destination != null)
+            {
+                //availableSpecies = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == id).Select(d => d.Species).Distinct().ToList(); //<==Working list that gives Species
+                dsmrAvailableSpecies = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == id).OrderBy(d=>d.Species.SpeciesName).Select(d => d).ToList(); //<==Working list that gives Species
+                //availableSpecies = availableSpecies.Select(s => s.SpeciesId).Distinct();
+                //totalSpecies = _context.DestSpeciesMonth.
+                //destination.AvailableSpecies = availableSpecies;
+                //return availableSpecies;
+                return dsmrAvailableSpecies;
+            }
+            else
+            {
+                //
+                return dsmrAvailableSpecies;
+            }
+            View(destination);
+        }
+        public string GetMonthlyRatingArray(int destinationId, List<Species> speciesList)
+        {
+            string[] ratingsArray = new string [12];
+            for (int i = 0; i < 11; i++)
+            {
+                var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == destinationId && d.DSMSpeciesId == speciesList[i].SpeciesId && d.DSMMonthId == i + 1);
+                //string ratingTitle = 
+                //ratingsArray[i] = _context.DestSpeciesMonth.Where(d=>d.DSMDestinationId).;
+            }
+            //string monthlyRating = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == destinationId && d.DSMSpeciesId == speciesId && d.DSMMonthId == monthlyId).Select(d=> d.Month.MonthName).FirstOrDefault();
+            //string[] ratingsArray = { };
+
+            //return monthlyRating;
+            string teststring = "";
+            return teststring;
         }
     }
 }
