@@ -52,6 +52,32 @@ namespace FishingCapstone.Controllers
             return View(destination);
         }
 
+        // GET: Destinations/Details/5
+        public async Task<IActionResult> DestinationCalendar(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var destination = await _context.Destination
+                .FirstOrDefaultAsync(m => m.DestinationId == id);
+            if (destination == null)
+            {
+                return NotFound();
+            }
+            //int parsedId = Int32.Parse(destination.DestinationId);
+            var speciesList = GetDestinationSpecies(destination.DestinationId);
+            destination.AvailableSpecies = speciesList;
+            var dsmList = GetDSMByDestination(destination.DestinationId);
+            destination.DSMCalender = dsmList;
+            CalendarViewModel calendarViewModel = new CalendarViewModel();
+            calendarViewModel.Destination = destination;
+            var ratingsList = GetMonthlyRatingArray(destination.DestinationId, speciesList);
+
+            return View(destination);
+        }
+
         // GET: Destinations/Create
         public IActionResult Create()
         {
