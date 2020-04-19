@@ -14,5 +14,7 @@ namespace FishingCapstone.Models
         public CalendarByMonth CalendarByMonth { get; set; }
         [NotMapped]
         public List<Species> BestSpecies { get; set; }
+        [NotMapped]
+        public List<Destination> BestDestinations { get; set; }
     }
 }

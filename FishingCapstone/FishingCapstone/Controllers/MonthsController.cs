@@ -161,9 +161,9 @@ namespace FishingCapstone.Controllers
             }
             //GetBestDestinationsByMonth();
             int ratingValue = 4;
-            var bestSpeciesList = GetBestSpeciesForMonth(month.MonthId, ratingValue);
-            var bestDestinationsList = GetBestDestinationsForMonth(month.MonthId, ratingValue);
-            GetCalendarByMonth(month.MonthId, ratingValue, bestSpeciesList, bestDestinationsList);
+            month.BestSpecies = GetBestSpeciesForMonth(month.MonthId, ratingValue);
+            month.BestDestinations = GetBestDestinationsForMonth(month.MonthId, ratingValue);
+            GetCalendarByMonth(month.MonthId, ratingValue, month.BestSpecies, month.BestDestinations);
 
             return View(month);
         }
@@ -182,7 +182,6 @@ namespace FishingCapstone.Controllers
         public CalendarByMonth GetCalendarByMonth(int monthId, int ratingValue, List<Species> bestSpeciesList, List<Destination> bestDestinationsList)
         {
             CalendarByMonth calendarByMonth = new CalendarByMonth();
-            string[] ratingsArray = new string[bestSpeciesList.Count];
             calendarByMonth.CalendarByMonthRows = new List<CalendarByMonthRow>();
             var thisMonth = _context.Month.Where(m => m.MonthId == monthId).Select(m => m).FirstOrDefault();
             thisMonth.BestSpecies = bestSpeciesList;
@@ -190,6 +189,7 @@ namespace FishingCapstone.Controllers
             for (int i = 0; i < bestDestinationsList.Count; i++) //<===The Row is going to be grouped by Month, and each column of row with show the rating of species with Best fishing for this month
             {
                 CalendarByMonthRow calendarByMonthRow = new CalendarByMonthRow();
+                string[] ratingsArray = new string[bestSpeciesList.Count];
                 calendarByMonthRow.Month = thisMonth;
                 calendarByMonthRow.BestSpeciesForMonth = bestSpeciesList;
                 calendarByMonthRow.Rating = thisRating;
