@@ -1,0 +1,42 @@
+﻿@model FishingCapstone.Models.Destination
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
+}
+
+<h1>Compare Two Destinations by Month</h1>
+
+<h4>Destination</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Compare" method="post">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+
+            @*<div class="form-group">
+            <label class="control-label">First Destination: @Model.DestinationName</label>
+            <input type="hidden" asp-for="DestinationId" />
+        </div>*@
+            <input type="hidden" asp-for="DestinationId" />
+            @Html.Hidden("DestinationId")
+            <div class="form-group">Comparing: @Model.DestinationName</div>
+            <div class="form-group">
+                <label class="control-label">To Second Destination: </label>
+                <input type="number" name="destination2id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Month: </label>
+                <input type="number" name="monthid" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Show Comparison" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
