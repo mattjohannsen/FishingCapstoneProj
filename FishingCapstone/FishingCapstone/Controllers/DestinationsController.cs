@@ -126,8 +126,9 @@ namespace FishingCapstone.Controllers
             }
 
             DestinationComparision destinationComparision = new DestinationComparision();
-            destinationComparision.Destination2 = destination2;
-            destinationComparision.MonthToCompare = month;
+            destination1.DestinationComparision = destinationComparision;
+            destination1.DestinationComparision.Destination2 = destination2;
+            destination1.DestinationComparision.MonthToCompare = month;
 
             return View(destination1);
         }
