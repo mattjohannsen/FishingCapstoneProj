@@ -146,7 +146,7 @@ namespace FishingCapstone.Controllers
         }
 
         // GET: Months/CalendarByMonth/5
-        public async Task<IActionResult> CalendarByMonth(int? id)
+        public async Task<IActionResult> Calendar(int? id)
         {
             if (id == null)
             {
