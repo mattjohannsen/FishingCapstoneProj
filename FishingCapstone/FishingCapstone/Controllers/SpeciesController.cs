@@ -26,6 +26,26 @@ namespace FishingCapstone.Controllers
         }
 
         // GET: Species/Details/5
+        public async Task<IActionResult> Calendar(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var species = await _context.Species
+                .FirstOrDefaultAsync(m => m.SpeciesId == id);
+            if (species == null)
+            {
+                return NotFound();
+            }
+            var destinationList = GetSpeciesDestinations(species);
+            species.BestDestinations = destinationList;
+            GetCalendarBySpecies(species.SpeciesId, destinationList);
+            return View(species);
+        }
+
+        // GET: Species/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -148,6 +168,46 @@ namespace FishingCapstone.Controllers
         private bool SpeciesExists(int id)
         {
             return _context.Species.Any(e => e.SpeciesId == id);
+        }
+
+        public List<Destination> GetSpeciesDestinations(Species species)
+        {
+            var destinationsList = new List<Destination>();
+            if (species != null)
+            {
+                destinationsList = _context.DestSpeciesMonth.Where(d => d.DSMSpeciesId == species.SpeciesId).Select(d => d.Destination).Distinct().OrderBy(d => d.DestinationName).ToList();
+                return destinationsList;
+            }
+            else
+            {
+                return destinationsList;
+            }
+        }
+
+        public CalendarBySpecies GetCalendarBySpecies(int speciesId, List<Destination> destinationsList)
+        {
+            CalendarBySpecies speciesCalendar = new CalendarBySpecies();
+            speciesCalendar.CalendarBySpeciesRows = new List<CalendarBySpeciesRow>();
+            var thisSpecies = _context.Species.Where(s => s.SpeciesId == speciesId).FirstOrDefault();
+            for (int i = 0; i < destinationsList.Count; i++)
+            {
+                CalendarBySpeciesRow calendarRow = new CalendarBySpeciesRow();
+                string[] ratingsArray = new string[12];
+                calendarRow.Species = thisSpecies;
+                var currentDestinationId = destinationsList[i].DestinationId;
+                var currentDestination = _context.Destination.Where(d => d.DestinationId == currentDestinationId).FirstOrDefault();
+                calendarRow.Destination = currentDestination;
+
+                for (int j = 0; j < 12; j++)
+                {
+                    var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == currentDestinationId && d.DSMSpeciesId == speciesId && d.DSMMonthId == j + 1).Select(d => d.Rating.RatingName).FirstOrDefault();
+                    ratingsArray[j] = ratingToAdd;
+                }
+                calendarRow.MonthlyRatings = ratingsArray;
+                speciesCalendar.CalendarBySpeciesRows.Add(calendarRow);
+            }
+            thisSpecies.Calendar = speciesCalendar;
+            return speciesCalendar;
         }
     }
 }
