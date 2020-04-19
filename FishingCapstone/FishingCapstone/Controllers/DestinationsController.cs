@@ -129,6 +129,10 @@ namespace FishingCapstone.Controllers
             destination1.DestinationComparision = destinationComparision;
             destination1.DestinationComparision.Destination2 = destination2;
             destination1.DestinationComparision.MonthToCompare = month;
+            var speciesList = GetDestinationSpecies(destination1.DestinationId, destination2.DestinationId);
+            destination1.DestinationComparision.SpeciesList = speciesList;
+            GetDestinationComparison(destination1.DestinationId);
+
 
             return View(destination1);
         }
@@ -303,7 +307,6 @@ namespace FishingCapstone.Controllers
         {
             return _context.Destination.Any(e => e.DestinationId == id);
         }
-
         public List<Species> GetDestinationSpecies(int id)
         {
             var destination = _context.Destination.Where(d => d.DestinationId == id);
@@ -319,15 +322,30 @@ namespace FishingCapstone.Controllers
                 return availableSpecies;
             }
         }
+        public List<Species> GetDestinationSpecies(int destination1id, int destination2id)
+        {
+            var destination = _context.Destination.Where(d => d.DestinationId == destination1id);
+            var availableSpecies = new List<Species>();
+
+            if (destination != null)
+            {
+                availableSpecies = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == destination1id || d.DSMDestinationId == destination2id).Select(d => d.Species).Distinct().OrderBy(d => d.SpeciesId).ToList();
+                return availableSpecies;
+            }
+            else
+            {
+                return availableSpecies;
+            }
+        }
         public CalendarByDestination GetDestCalendar(int destinationId, List<Species> speciesList)
         {
             CalendarByDestination destCalendar = new CalendarByDestination();
             destCalendar.CalendarByDestinationRows = new List<CalendarByDestinationRow>();
             var thisDestination = _context.Destination.Where(d => d.DestinationId == destinationId).FirstOrDefault();
-            for (int i = 0; i < speciesList.Count; i++)
+            for (int i = 0; i < speciesList.Count; i++) //Create a row for every species at Destination
             {
                 CalendarByDestinationRow calendarRow = new CalendarByDestinationRow();
-                string[] ratingsArray = new string[12];
+                string[] ratingsArray = new string[12]; //Array of ratings for every month
                 calendarRow.Destination = thisDestination;
                 var currentSpeciesId = speciesList[i].SpeciesId;
                 var currentSpecies = _context.Species.Where(s => s.SpeciesId == currentSpeciesId).FirstOrDefault();
@@ -344,7 +362,54 @@ namespace FishingCapstone.Controllers
             thisDestination.Calendar = destCalendar;
             return destCalendar;
         }
+        public CompareChart GetDestinationComparison(int destinationId)
+        {
+            var thisDestination = _context.Destination.Where(d => d.DestinationId == destinationId).FirstOrDefault();
+            var otherDestination = thisDestination.DestinationComparision.Destination2;
+            CompareChart compareChart = new CompareChart();
+            compareChart.CompareChartRows = new List<CompareChartRow>();
+            var speciesList = thisDestination.DestinationComparision.SpeciesList;
+            for (int i = 0; i < speciesList.Count; i++)
+            {
+                CompareChartRow compareChartRow = new CompareChartRow();
+                string[] ratingsArray = new string[2];
+                var currentSpeciesId = speciesList[i].SpeciesId;
+                var currentSpecies = _context.Species.Where(s => s.SpeciesId == currentSpeciesId).FirstOrDefault();
+                compareChartRow.Species = currentSpecies;
+                for (int j = 0; j < 2; j++)
+                {
+                    if (j == 0)
+                    {
+                        var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == destinationId && d.DSMSpeciesId == currentSpeciesId && d.DSMMonthId == j + 1).Select(d => d.Rating.RatingName).FirstOrDefault();
+                        if (ratingToAdd!=null)
+                        {
+                            ratingsArray[j] = ratingToAdd;
+                        }
+                        else
+                        {
+                            ratingsArray[j] = "NA";
+                        }
 
+                    }
+                    else
+                    {
+                        var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == otherDestination.DestinationId && d.DSMSpeciesId == currentSpeciesId && d.DSMMonthId == j + 1).Select(d => d.Rating.RatingName).FirstOrDefault();
+                        if (ratingToAdd != null)
+                        {
+                            ratingsArray[j] = ratingToAdd;
+                        }
+                        else
+                        {
+                            ratingsArray[j] = "NA";
+                        }
+                    }
+                }
+                compareChartRow.SpeciesRatings = ratingsArray;
+                compareChart.CompareChartRows.Add(compareChartRow);
+            }
+            thisDestination.DestinationComparision.CompareChart = compareChart;
+            return compareChart;
+        }
         //public List<DestSpeciesMonth> GetDSMByDestination(int id)
         //{
         //    var destination = _context.Destination.Where(d => d.DestinationId == id);

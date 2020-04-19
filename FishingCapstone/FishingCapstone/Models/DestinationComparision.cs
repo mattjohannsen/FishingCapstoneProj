@@ -9,5 +9,7 @@ namespace FishingCapstone.Models
     {
         public Destination Destination2 { get; set; }
         public Month MonthToCompare { get; set; }
+        public List<Species> SpeciesList { get; set; }
+        public CompareChart CompareChart { get; set; }
     }
 }

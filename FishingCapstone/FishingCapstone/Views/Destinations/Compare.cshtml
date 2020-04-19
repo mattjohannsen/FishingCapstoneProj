@@ -41,6 +41,30 @@
     <p>@Model.DestinationComparision.MonthToCompare.MonthName</p>
 </div>
 <div>
+    <table>
+        <tr>
+            <td><p>Species</p></td>
+            <td><p>@Model.DestinationName</p></td>
+            <td><p>@Model.DestinationComparision.Destination2.DestinationName</p></td>
+        </tr>
+        @foreach (var item in Model.DestinationComparision.CompareChart.CompareChartRows)
+        {
+            <tr>
+                <td>
+                    <p>@item.Species.SpeciesName</p>
+                </td>
+                @for (int i = 0; i < 2; i++)
+                {
+
+                        <td>
+                            <p>@item.SpeciesRatings[i]</p>
+                        </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+<div>
     <a asp-action="Edit" asp-route-id="@Model.DestinationId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
