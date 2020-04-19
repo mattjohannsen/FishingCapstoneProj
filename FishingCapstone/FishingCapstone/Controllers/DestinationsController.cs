@@ -366,6 +366,7 @@ namespace FishingCapstone.Controllers
         {
             var thisDestination = _context.Destination.Where(d => d.DestinationId == destinationId).FirstOrDefault();
             var otherDestination = thisDestination.DestinationComparision.Destination2;
+            int thisMonthId = thisDestination.DestinationComparision.MonthToCompare.MonthId;
             CompareChart compareChart = new CompareChart();
             compareChart.CompareChartRows = new List<CompareChartRow>();
             var speciesList = thisDestination.DestinationComparision.SpeciesList;
@@ -380,7 +381,7 @@ namespace FishingCapstone.Controllers
                 {
                     if (j == 0)
                     {
-                        var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == destinationId && d.DSMSpeciesId == currentSpeciesId && d.DSMMonthId == j + 1).Select(d => d.Rating.RatingName).FirstOrDefault();
+                        var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == thisDestination.DestinationId && d.DSMSpeciesId == currentSpeciesId && d.DSMMonthId == thisMonthId).Select(d => d.Rating.RatingName).FirstOrDefault();
                         if (ratingToAdd!=null)
                         {
                             ratingsArray[j] = ratingToAdd;
@@ -393,7 +394,7 @@ namespace FishingCapstone.Controllers
                     }
                     else
                     {
-                        var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == otherDestination.DestinationId && d.DSMSpeciesId == currentSpeciesId && d.DSMMonthId == j + 1).Select(d => d.Rating.RatingName).FirstOrDefault();
+                        var ratingToAdd = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == otherDestination.DestinationId && d.DSMSpeciesId == currentSpeciesId && d.DSMMonthId == thisMonthId).Select(d => d.Rating.RatingName).FirstOrDefault();
                         if (ratingToAdd != null)
                         {
                             ratingsArray[j] = ratingToAdd;
