@@ -289,13 +289,50 @@ namespace FishingCapstone.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Trip",
+                columns: table => new
+                {
+                    TripId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ExplorerId = table.Column<int>(nullable: false),
+                    DestinationId = table.Column<int>(nullable: false),
+                    TripName = table.Column<string>(nullable: true),
+                    TripGuideService = table.Column<string>(nullable: true),
+                    DSMMonthId = table.Column<int>(nullable: false),
+                    TripStart = table.Column<DateTime>(nullable: true),
+                    TripEnd = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trip", x => x.TripId);
+                    table.ForeignKey(
+                        name: "FK_Trip_Month_DSMMonthId",
+                        column: x => x.DSMMonthId,
+                        principalTable: "Month",
+                        principalColumn: "MonthId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Trip_Destination_DestinationId",
+                        column: x => x.DestinationId,
+                        principalTable: "Destination",
+                        principalColumn: "DestinationId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Trip_Explorer_ExplorerId",
+                        column: x => x.ExplorerId,
+                        principalTable: "Explorer",
+                        principalColumn: "ExplorerId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3f556e7b-60f4-449d-8672-1f670722d6cd", "a9b02f78-14c6-4f6c-8860-2d957a2d458d", "Explorer", "EXPLORER" },
-                    { "53b5041d-56ba-47b4-ab1d-69b827f244ba", "3b7eef9f-407f-4572-afdd-62247ed74314", "Admin", "ADMIN" }
+                    { "729f5d03-8d0e-4f9b-b807-c6a9882fed11", "f69929b3-dfc8-48f8-aa37-fe3775b8b761", "Explorer", "EXPLORER" },
+                    { "e6483b44-cbe5-47d4-8e94-f536aaf21e97", "d6db6772-143b-4628-8c9f-fac03670c017", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -1051,6 +1088,21 @@ namespace FishingCapstone.Migrations
                 name: "IX_Explorer_IdentityUserId",
                 table: "Explorer",
                 column: "IdentityUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trip_DSMMonthId",
+                table: "Trip",
+                column: "DSMMonthId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trip_DestinationId",
+                table: "Trip",
+                column: "DestinationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trip_ExplorerId",
+                table: "Trip",
+                column: "ExplorerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -1077,22 +1129,25 @@ namespace FishingCapstone.Migrations
                 name: "DestSpeciesMonth");
 
             migrationBuilder.DropTable(
-                name: "Explorer");
+                name: "Trip");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "Destination");
-
-            migrationBuilder.DropTable(
-                name: "Month");
 
             migrationBuilder.DropTable(
                 name: "Rating");
 
             migrationBuilder.DropTable(
                 name: "Species");
+
+            migrationBuilder.DropTable(
+                name: "Month");
+
+            migrationBuilder.DropTable(
+                name: "Destination");
+
+            migrationBuilder.DropTable(
+                name: "Explorer");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

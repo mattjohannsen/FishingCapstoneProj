@@ -43,9 +43,13 @@
 <div>
     <table>
         <tr>
+            <td><p></p></td>
+            <td colspan="2"><p>Click Destination to Select Trip</p></td>
+        </tr>
+        <tr>
             <td><p>Species</p></td>
-            <td><p>@Model.DestinationName</p></td>
-            <td><p>@Model.DestinationComparision.Destination2.DestinationName</p></td>
+            <td><p><a href="../Trips/Create/?DestinationId=@Model.DestinationId&MonthId=@Model.DestinationComparision.MonthToCompare.MonthId">@Model.DestinationName</a></p></td>
+            <td><p><a href="../Trips/Create/?DestinationId=@Model.DestinationId&MonthId=@Model.DestinationComparision.MonthToCompare.MonthId">@Model.DestinationComparision.Destination2.DestinationName</a></p></td>
         </tr>
         @foreach (var item in Model.DestinationComparision.CompareChart.CompareChartRows)
         {
@@ -56,9 +60,9 @@
                 @for (int i = 0; i < 2; i++)
                 {
 
-                        <td>
-                            <p>@item.SpeciesRatings[i]</p>
-                        </td>
+                    <td>
+                        <p>@item.SpeciesRatings[i]</p>
+                    </td>
                 }
             </tr>
         }

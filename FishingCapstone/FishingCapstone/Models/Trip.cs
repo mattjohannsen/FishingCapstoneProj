@@ -17,7 +17,10 @@ namespace FishingCapstone.Models
         public int DestinationId { get; set; }
         public Destination Destination { get; set; }
         public string TripName { get; set; }
-        public string TripMonth { get; set; }
+        public string TripGuideService { get; set; }
+        [ForeignKey("Month")]
+        public int DSMMonthId { get; set; }
+        public Month Month { get; set; }
         [Display(Name = "Trip Start Date")]
         [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}")]

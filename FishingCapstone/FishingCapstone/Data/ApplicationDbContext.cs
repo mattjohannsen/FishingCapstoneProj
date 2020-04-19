@@ -697,6 +697,7 @@ namespace FishingCapstone.Data
         public DbSet<FishingCapstone.Models.Rating> Rating { get; set; }
         public DbSet<FishingCapstone.Models.Species> Species { get; set; }
         public DbSet<FishingCapstone.Models.DestSpeciesMonth> DestSpeciesMonth { get; set; }
+        public DbSet<FishingCapstone.Models.Trip> Trip { get; set; }
 
 
 

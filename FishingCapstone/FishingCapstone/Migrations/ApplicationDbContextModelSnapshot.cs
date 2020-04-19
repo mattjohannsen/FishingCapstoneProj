@@ -5203,6 +5203,45 @@ namespace FishingCapstone.Migrations
                         });
                 });
 
+            modelBuilder.Entity("FishingCapstone.Models.Trip", b =>
+                {
+                    b.Property<int>("TripId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DSMMonthId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DestinationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExplorerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("TripEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TripGuideService")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TripName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("TripStart")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("TripId");
+
+                    b.HasIndex("DSMMonthId");
+
+                    b.HasIndex("DestinationId");
+
+                    b.HasIndex("ExplorerId");
+
+                    b.ToTable("Trip");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -5232,15 +5271,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "53b5041d-56ba-47b4-ab1d-69b827f244ba",
-                            ConcurrencyStamp = "3b7eef9f-407f-4572-afdd-62247ed74314",
+                            Id = "e6483b44-cbe5-47d4-8e94-f536aaf21e97",
+                            ConcurrencyStamp = "d6db6772-143b-4628-8c9f-fac03670c017",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "3f556e7b-60f4-449d-8672-1f670722d6cd",
-                            ConcurrencyStamp = "a9b02f78-14c6-4f6c-8860-2d957a2d458d",
+                            Id = "729f5d03-8d0e-4f9b-b807-c6a9882fed11",
+                            ConcurrencyStamp = "f69929b3-dfc8-48f8-aa37-fe3775b8b761",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });
@@ -5454,6 +5493,27 @@ namespace FishingCapstone.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
                         .HasForeignKey("IdentityUserId");
+                });
+
+            modelBuilder.Entity("FishingCapstone.Models.Trip", b =>
+                {
+                    b.HasOne("FishingCapstone.Models.Month", "Month")
+                        .WithMany()
+                        .HasForeignKey("DSMMonthId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FishingCapstone.Models.Destination", "Destination")
+                        .WithMany()
+                        .HasForeignKey("DestinationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FishingCapstone.Models.Explorer", "Explorer")
+                        .WithMany()
+                        .HasForeignKey("ExplorerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
