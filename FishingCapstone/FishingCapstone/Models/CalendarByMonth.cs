@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace FishingCapstone.Models
 {
-    public class Calendar
+    public class CalendarByMonth
     {
-        public List<CalendarRow> CalendarRows { get; set; }
+        public List<CalendarByMonthRow> CalendarByMonthRows { get; set; }
     }
 }

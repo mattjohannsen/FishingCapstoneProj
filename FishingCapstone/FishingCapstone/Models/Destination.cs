@@ -21,7 +21,7 @@ namespace FishingCapstone.Models
         [NotMapped]
         public List<Rating> Rating { get; set; }
         [NotMapped]
-        public Calendar Calendar { get; set; }
+        public CalendarByDestination Calendar { get; set; }
 
     }
 }

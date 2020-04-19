@@ -6,7 +6,7 @@
     int thisMonth = DateTime.Now.Month;
 }
 
-<h1>Details</h1>
+    <h1>Calendar By Destination</h1>
 
 <div>
     <h4>Destination</h4>
@@ -49,7 +49,7 @@
             <td>November</td>
             <td>December</td>
         </tr>
-        @foreach (var item in Model.Calendar.CalendarRows)
+        @foreach (var item in Model.Calendar.CalendarByDestinationRows)
         {
     <tr>
         <td>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FishingCapstone.Models
 {
-    public class CalendarRow
+    public class CalendarByDestinationRow
     {
         public Destination Destination { get; set; }
 
