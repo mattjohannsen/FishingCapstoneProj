@@ -48,7 +48,7 @@ namespace FishingCapstone.Controllers
         // GET: Photos/Create
         public IActionResult Create()
         {
-            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripId");
+            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripName");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace FishingCapstone.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripId", photos.PhotoTripId);
+            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripName", photos.PhotoTripId);
             return View(photos);
         }
 
@@ -82,7 +82,7 @@ namespace FishingCapstone.Controllers
             {
                 return NotFound();
             }
-            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripId", photos.PhotoTripId);
+            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripName", photos.PhotoTripId);
             return View(photos);
         }
 
@@ -118,7 +118,7 @@ namespace FishingCapstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripId", photos.PhotoTripId);
+            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripName", photos.PhotoTripId);
             return View(photos);
         }
 

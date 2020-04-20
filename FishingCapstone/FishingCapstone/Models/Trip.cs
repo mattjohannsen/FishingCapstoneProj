@@ -16,8 +16,11 @@ namespace FishingCapstone.Models
         [ForeignKey("Destination")]
         public int DestinationId { get; set; }
         public Destination Destination { get; set; }
+        [Display(Name = "Name of Trip")]
         public string TripName { get; set; }
+        [Display(Name = "Guide Service")]
         public string TripGuideService { get; set; }
+        [Display(Name = "Month")]
         [ForeignKey("Month")]
         public int TripMonthId { get; set; }
         public Month Month { get; set; }
