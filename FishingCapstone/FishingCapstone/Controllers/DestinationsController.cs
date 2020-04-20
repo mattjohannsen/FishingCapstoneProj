@@ -58,6 +58,7 @@ namespace FishingCapstone.Controllers
             {
                 return NotFound();
             }
+            ViewData["Months"] = new SelectList(_context.Month, "MonthId", "MonthName");
 
             return View(destination);
         }
