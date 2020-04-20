@@ -96,9 +96,12 @@ namespace FishingCapstone.Controllers
             {
                 return NotFound();
             }
-            ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationId", trip.DestinationId);
-            ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId", trip.ExplorerId);
-            ViewData["TripMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId", trip.TripMonthId);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var explorer = _context.Explorer.Where(e => e.IdentityUser.Id == userId).FirstOrDefault();
+            ViewData["ExplorerId"] = explorer.ExplorerId;
+            ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationName", trip.DestinationId);
+            //ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId", trip.ExplorerId);
+            ViewData["TripMonthId"] = new SelectList(_context.Month, "MonthId", "MonthName", trip.TripMonthId);
             return View(trip);
         }
 

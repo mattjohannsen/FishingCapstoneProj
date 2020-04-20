@@ -14,11 +14,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TripId" />
-            <div class="form-group">
-                <label asp-for="ExplorerId" class="control-label"></label>
-                <select asp-for="ExplorerId" class="form-control" asp-items="ViewBag.ExplorerId"></select>
-                <span asp-validation-for="ExplorerId" class="text-danger"></span>
-            </div>
+            @Html.Hidden("ExplorerId")
             <div class="form-group">
                 <label asp-for="DestinationId" class="control-label"></label>
                 <select asp-for="DestinationId" class="form-control" asp-items="ViewBag.DestinationId"></select>
