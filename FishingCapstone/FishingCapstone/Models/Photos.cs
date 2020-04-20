@@ -9,6 +9,7 @@ namespace FishingCapstone.Models
     public class Photos
     {
         public int PhotosId { get; set; }
+        public string PhotoFile { get; set; }
         [ForeignKey("Trip")]
         public int PhotoTripId { get; set; }
         public Trip Trip { get; set; }

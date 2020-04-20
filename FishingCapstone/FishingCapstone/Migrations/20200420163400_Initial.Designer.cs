@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishingCapstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200420021258_Initial")]
+    [Migration("20200420163400_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -5273,15 +5273,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1115767d-7ed4-4f28-a195-1447ecb17e5e",
-                            ConcurrencyStamp = "3c2fbbd4-2f62-41dc-abc1-2d4a4ce4d1ed",
+                            Id = "c154fc73-1eae-487d-97f0-4f7d62780256",
+                            ConcurrencyStamp = "a6a41f96-d99b-4bef-b89d-0a80c6c85c79",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4e94520c-d19b-4fc0-9258-7e98e9edf487",
-                            ConcurrencyStamp = "0bdb39fa-4090-409c-ba72-ef517b455643",
+                            Id = "80072ecd-5a58-4d48-9f7f-a69ee4aa6f7e",
+                            ConcurrencyStamp = "441b1514-4765-4be8-9278-8ea47e630a5d",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });
