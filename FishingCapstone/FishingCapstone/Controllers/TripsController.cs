@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FishingCapstone.Data;
 using FishingCapstone.Models;
+using System.Security.Claims;
 
 namespace FishingCapstone.Controllers
 {
@@ -48,11 +49,15 @@ namespace FishingCapstone.Controllers
         }
 
         // GET: Trips/Create
-        public IActionResult Create()
+        public IActionResult Create(int? DestinationId, int? MonthId)
         {
-            ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationId");
-            ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId");
-            ViewData["DSMMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId");
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var explorer = _context.Explorer.Where(e => e.IdentityUser.Id == userId).FirstOrDefault();
+            var destination = _context.Destination.Where(d => d.DestinationId == DestinationId).FirstOrDefault();
+            var month = _context.Month.Where(m => m.MonthId == MonthId).FirstOrDefault();
+            ViewData["ExplorerId"] = explorer.ExplorerId;
+            ViewData["DestinationId"] = destination.DestinationId;
+            ViewData["TripMonthId"] = month.MonthId;
             return View();
         }
 
@@ -61,17 +66,20 @@ namespace FishingCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TripId,ExplorerId,DestinationId,TripName,TripGuideService,DSMMonthId,TripStart,TripEnd")] Trip trip)
+        public async Task<IActionResult> Create([Bind("TripId,ExplorerId,DestinationId,TripName,TripGuideService,TripMonthId,TripStart,TripEnd")] Trip trip)
         {
             if (ModelState.IsValid)
             {
+                //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                //var explorer = _context.Explorer.Where(e => e.IdentityUser.Id == userId).FirstOrDefault();
+                //trip.ExplorerId = explorer.ExplorerId;
                 _context.Add(trip);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationId", trip.DestinationId);
-            ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId", trip.ExplorerId);
-            ViewData["DSMMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId", trip.DSMMonthId);
+            //ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationId", trip.DestinationId);
+            //ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId", trip.ExplorerId);
+            //ViewData["TripMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId", trip.TripMonthId);
             return View(trip);
         }
 
@@ -90,7 +98,7 @@ namespace FishingCapstone.Controllers
             }
             ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationId", trip.DestinationId);
             ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId", trip.ExplorerId);
-            ViewData["DSMMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId", trip.DSMMonthId);
+            ViewData["TripMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId", trip.TripMonthId);
             return View(trip);
         }
 
@@ -99,7 +107,7 @@ namespace FishingCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TripId,ExplorerId,DestinationId,TripName,TripGuideService,DSMMonthId,TripStart,TripEnd")] Trip trip)
+        public async Task<IActionResult> Edit(int id, [Bind("TripId,ExplorerId,DestinationId,TripName,TripGuideService,TripMonthId,TripStart,TripEnd")] Trip trip)
         {
             if (id != trip.TripId)
             {
@@ -128,7 +136,7 @@ namespace FishingCapstone.Controllers
             }
             ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationId", trip.DestinationId);
             ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId", trip.ExplorerId);
-            ViewData["DSMMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId", trip.DSMMonthId);
+            ViewData["TripMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId", trip.TripMonthId);
             return View(trip);
         }
 

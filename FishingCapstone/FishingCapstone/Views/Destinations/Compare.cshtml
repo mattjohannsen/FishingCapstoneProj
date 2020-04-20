@@ -49,7 +49,7 @@
         <tr>
             <td><p>Species</p></td>
             <td><p><a href="../Trips/Create/?DestinationId=@Model.DestinationId&MonthId=@Model.DestinationComparision.MonthToCompare.MonthId">@Model.DestinationName</a></p></td>
-            <td><p><a href="../Trips/Create/?DestinationId=@Model.DestinationId&MonthId=@Model.DestinationComparision.MonthToCompare.MonthId">@Model.DestinationComparision.Destination2.DestinationName</a></p></td>
+            <td><p><a href="../Trips/Create/?DestinationId=@Model.DestinationComparision.Destination2.DestinationId&MonthId=@Model.DestinationComparision.MonthToCompare.MonthId">@Model.DestinationComparision.Destination2.DestinationName</a></p></td>
         </tr>
         @foreach (var item in Model.DestinationComparision.CompareChart.CompareChartRows)
         {

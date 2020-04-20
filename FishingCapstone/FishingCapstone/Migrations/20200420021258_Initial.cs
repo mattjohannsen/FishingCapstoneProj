@@ -299,19 +299,13 @@ namespace FishingCapstone.Migrations
                     DestinationId = table.Column<int>(nullable: false),
                     TripName = table.Column<string>(nullable: true),
                     TripGuideService = table.Column<string>(nullable: true),
-                    DSMMonthId = table.Column<int>(nullable: false),
+                    TripMonthId = table.Column<int>(nullable: false),
                     TripStart = table.Column<DateTime>(nullable: true),
                     TripEnd = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trip", x => x.TripId);
-                    table.ForeignKey(
-                        name: "FK_Trip_Month_DSMMonthId",
-                        column: x => x.DSMMonthId,
-                        principalTable: "Month",
-                        principalColumn: "MonthId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Trip_Destination_DestinationId",
                         column: x => x.DestinationId,
@@ -324,6 +318,12 @@ namespace FishingCapstone.Migrations
                         principalTable: "Explorer",
                         principalColumn: "ExplorerId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Trip_Month_TripMonthId",
+                        column: x => x.TripMonthId,
+                        principalTable: "Month",
+                        principalColumn: "MonthId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -331,8 +331,8 @@ namespace FishingCapstone.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "729f5d03-8d0e-4f9b-b807-c6a9882fed11", "f69929b3-dfc8-48f8-aa37-fe3775b8b761", "Explorer", "EXPLORER" },
-                    { "e6483b44-cbe5-47d4-8e94-f536aaf21e97", "d6db6772-143b-4628-8c9f-fac03670c017", "Admin", "ADMIN" }
+                    { "4e94520c-d19b-4fc0-9258-7e98e9edf487", "0bdb39fa-4090-409c-ba72-ef517b455643", "Explorer", "EXPLORER" },
+                    { "1115767d-7ed4-4f28-a195-1447ecb17e5e", "3c2fbbd4-2f62-41dc-abc1-2d4a4ce4d1ed", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -1090,11 +1090,6 @@ namespace FishingCapstone.Migrations
                 column: "IdentityUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Trip_DSMMonthId",
-                table: "Trip",
-                column: "DSMMonthId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Trip_DestinationId",
                 table: "Trip",
                 column: "DestinationId");
@@ -1103,6 +1098,11 @@ namespace FishingCapstone.Migrations
                 name: "IX_Trip_ExplorerId",
                 table: "Trip",
                 column: "ExplorerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trip_TripMonthId",
+                table: "Trip",
+                column: "TripMonthId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -1141,13 +1141,13 @@ namespace FishingCapstone.Migrations
                 name: "Species");
 
             migrationBuilder.DropTable(
-                name: "Month");
-
-            migrationBuilder.DropTable(
                 name: "Destination");
 
             migrationBuilder.DropTable(
                 name: "Explorer");
+
+            migrationBuilder.DropTable(
+                name: "Month");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
