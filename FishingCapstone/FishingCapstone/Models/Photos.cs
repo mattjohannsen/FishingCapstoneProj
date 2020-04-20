@@ -25,6 +25,7 @@ namespace FishingCapstone.Models
         [Display(Name = "Date Taken")]
         public int PhotoDate { get; set; }
         public string PhotoData { get; set; }
-
+        [NotMapped]
+        public IEnumerable<Trip> Trips { get; set; }
     }
 }

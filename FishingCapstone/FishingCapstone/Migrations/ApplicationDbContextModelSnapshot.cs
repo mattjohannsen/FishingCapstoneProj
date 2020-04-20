@@ -5306,15 +5306,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ddc6df44-d6bc-40db-97b3-970378bd6c1c",
-                            ConcurrencyStamp = "ed3faa0f-6638-4792-8511-2a0abedf8681",
+                            Id = "2d0ffad6-dadc-43b8-86a6-d33cd7d94e7d",
+                            ConcurrencyStamp = "b14c93e4-ffbf-4a2b-a31e-9e6048d8e009",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "ddcabe85-5c0b-4a70-a540-7952216d3b5b",
-                            ConcurrencyStamp = "dd42c51a-2172-4149-8098-d92b55b35a5a",
+                            Id = "d48e574b-ea58-4d22-abf7-2dcedd4b27a7",
+                            ConcurrencyStamp = "4b5f622f-ed0c-435d-a7f2-327cd2231bac",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

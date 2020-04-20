@@ -32,6 +32,8 @@ namespace FishingCapstone.Models
         [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? TripEnd { get; set; }
+        [NotMapped]
+        public List<Photos> TripPhotos { get; set; }
 
     }
 }

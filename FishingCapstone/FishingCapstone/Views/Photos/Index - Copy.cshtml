@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FishingCapstone.Models.Photos>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoCaption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoLat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoLong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoData)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoFile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trip.TripId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoCaption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoLat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoLong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoData)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PhotosId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PhotosId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PhotosId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,72 +1,42 @@
 ﻿@model IEnumerable<FishingCapstone.Models.Photos>
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-<h1>Index</h1>
+<h4 class="text-center text-uppercase">List of Photos</h4>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="New" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoFile)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Trip)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoCaption)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoLat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoLong)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoData)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.PhotoFile)</th>
+            <th>@Html.DisplayNameFor(model => model.PhotoCaption)</th>
+            <th>@Html.DisplayNameFor(model => model.PhotoTripId)</th>
+            <th>@Html.DisplayNameFor(model => model.PhotoLat)</th>
+            <th>@Html.DisplayNameFor(model => model.PhotoLong)</th>
+            <th>@Html.DisplayNameFor(model => model.PhotoDate)</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoFile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Trip.TripId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoCaption)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoLat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoLong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoData)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PhotosId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PhotosId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PhotosId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var photo in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@photo.PhotoFile"
+                         class="rounded-circle"
+                         height="40" width="40"
+                         asp-append-version="true" />
+                </td>
+                <td>@photo.PhotoCaption</td>
+                <td>@photo.PhotoTripId</td>
+                <td>@photo.PhotoLat</td>
+                <td>@photo.PhotoLong</td>
+                <td>@photo.PhotoDate</td>
+            </tr>
+
+        }
     </tbody>
 </table>

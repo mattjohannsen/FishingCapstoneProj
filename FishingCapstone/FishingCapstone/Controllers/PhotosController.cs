@@ -7,25 +7,79 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FishingCapstone.Data;
 using FishingCapstone.Models;
+using Microsoft.AspNetCore.Hosting;
+using FishingCapstone.ViewModels;
+using System.IO;
 
 namespace FishingCapstone.Controllers
 {
     public class PhotosController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public PhotosController(ApplicationDbContext context)
+        public PhotosController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            webHostEnvironment = hostEnvironment;
         }
 
         // GET: Photos
+        //public async Task<IActionResult> Index()
+        //{
+        //    var applicationDbContext = _context.Photos.Include(p => p.Trip);
+
+        //    return View(await applicationDbContext.ToListAsync());
+        //}
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Photos.Include(p => p.Trip);
-            return View(await applicationDbContext.ToListAsync());
+            var photo = await _context.Photos.ToListAsync();
+            return View(photo);
         }
 
+        public IActionResult New()
+        {
+            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripName");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> New(PhotosViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string uniqueFileName = UploadedFile(model);
+
+                Photos photo = new Photos
+                {
+                    PhotoFile = uniqueFileName,
+                    PhotoTripId = model.PhotoTripId,
+                    PhotoCaption = model.PhotoCaption,
+                };
+                _context.Add(photo);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
+        private string UploadedFile(PhotosViewModel model)
+        {
+            string uniqueFileName = null;
+
+            if (model.PhotoFile != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.PhotoFile.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.PhotoFile.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
+        }
         // GET: Photos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
