@@ -28,13 +28,45 @@
 <script>
     // Initialize and add the map
     function initMap() {
-        // The location of Uluru
-        var uluru = { lat: -25.344, lng: 131.036 };
-        // The map, centered at Uluru
+        // The location of Milwaukee
+        var latlongcoords = { lat: 43.0389, lng: 87.9065 };
+        // The map, centered at Milwaukee
         var map = new google.maps.Map(
-            document.getElementById('map'), { zoom: 4, center: uluru });
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({ position: uluru, map: map });
+            document.getElementById('map'), { zoom: 1, center: latlongcoords });
+        // Add markers to the map
+        @foreach(var item in Model.Trips){
+             <text>
+                var marker = new google.maps.Marker({
+                  map: map,
+                  position: { lat: @item.Destination.DestinationLat, lng: @item.Destination.DestinationLong },
+                  title: '@item.TripName'
+                });
+                var contentString = '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    '</div>' +
+                                    '<h1 id="firstHeading" class="firstHeading">@item.TripName</h1>' +
+                                    '<div id="bodyContent">' +
+                                    '<p>Date: @item.TripStart - @item.TripEnd</p>' +
+                                    '<p>Guide: @item.TripGuideService</p>' +
+                                    '<p><a href="../Trips/Details/@item.TripId">' +
+                                    'Photo Album</a> ' +
+                                    '</p>' +
+                                    '</div>' +
+                                    '</div>';
+            </text>
+        }
+        //var marker = new google.maps.Marker({ position: latlongcoords, map: map });
+
+
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
     }
 </script>
 <!--Load the API from the specified URL
