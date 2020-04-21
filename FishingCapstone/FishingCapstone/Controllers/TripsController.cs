@@ -44,7 +44,8 @@ namespace FishingCapstone.Controllers
             {
                 return NotFound();
             }
-
+            var tripPhotos = _context.Photos.Where(p => p.PhotoTripId == trip.TripId).ToList();
+            trip.TripPhotos = tripPhotos;
             return View(trip);
         }
 

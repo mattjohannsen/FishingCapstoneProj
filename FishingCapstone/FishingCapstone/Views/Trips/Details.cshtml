@@ -14,14 +14,14 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Explorer)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Explorer.ExplorerId)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Explorer.FirstName) @Html.DisplayFor(model => model.Explorer.LastName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Destination)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Destination.DestinationId)
+            @Html.DisplayFor(model => model.Destination.DestinationName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TripName)
@@ -39,7 +39,7 @@
             @Html.DisplayNameFor(model => model.Month)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Month.MonthId)
+            @Html.DisplayFor(model => model.Month.MonthName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TripStart)
@@ -55,6 +55,22 @@
         </dd>
     </dl>
 </div>
+<table>
+    <tr>
+        <td><h3>Trip Photo Album</h3></td>
+    </tr>
+    @foreach (var item in Model.TripPhotos)
+    {
+        <tr>
+            <td><h3>@item.PhotoCaption</h3></td>
+        </tr>
+        <tr>
+            <td><img src="~/images/@item.PhotoFile" alt="@item.PhotoCaption" width="400"></td>
+        </tr>
+    }
+
+
+</table>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.TripId">Edit</a> |
     <a asp-action="Index">Back to List</a>

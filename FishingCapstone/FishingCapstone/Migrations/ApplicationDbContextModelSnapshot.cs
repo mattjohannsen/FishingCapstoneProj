@@ -5040,8 +5040,8 @@ namespace FishingCapstone.Migrations
                     b.Property<string>("PhotoData")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhotoDate")
-                        .HasColumnType("int");
+                    b.Property<string>("PhotoDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoFile")
                         .HasColumnType("nvarchar(max)");
@@ -5306,15 +5306,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2d0ffad6-dadc-43b8-86a6-d33cd7d94e7d",
-                            ConcurrencyStamp = "b14c93e4-ffbf-4a2b-a31e-9e6048d8e009",
+                            Id = "aade6681-dcb7-4d6d-be22-8e569ab2611c",
+                            ConcurrencyStamp = "80437b28-d20e-429c-8c3b-a100885b6628",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d48e574b-ea58-4d22-abf7-2dcedd4b27a7",
-                            ConcurrencyStamp = "4b5f622f-ed0c-435d-a7f2-327cd2231bac",
+                            Id = "fb0655d9-5782-4d00-bf59-15e4fe8dcc3b",
+                            ConcurrencyStamp = "b47b9538-6dd2-4b18-8ba2-c01db8ce45e6",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

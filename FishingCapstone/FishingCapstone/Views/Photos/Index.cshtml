@@ -25,12 +25,9 @@
         {
             <tr>
                 <td>
-                    <img src="~/images/@photo.PhotoFile"
-                         class="rounded-circle"
-                         height="40" width="40"
-                         asp-append-version="true" />
+                    <a asp-action="Details" asp-route-id="@photo.PhotosId"><img src="~/images/@photo.PhotoFile" class="rounded-circle" height="40" width="40" asp-append-version="true" /></a>
                 </td>
-                <td>@photo.PhotoCaption</td>
+                <td><a asp-action="Edit" asp-route-id="@photo.PhotosId">@photo.PhotoCaption</a></td>
                 <td>@photo.PhotoTripId</td>
                 <td>@photo.PhotoLat</td>
                 <td>@photo.PhotoLong</td>

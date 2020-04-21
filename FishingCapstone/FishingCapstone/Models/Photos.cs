@@ -23,7 +23,7 @@ namespace FishingCapstone.Models
         [Display(Name = "Longitude")]
         public string PhotoLong { get; set; }
         [Display(Name = "Date Taken")]
-        public int PhotoDate { get; set; }
+        public string PhotoDate { get; set; }
         public string PhotoData { get; set; }
         [NotMapped]
         public IEnumerable<Trip> Trips { get; set; }

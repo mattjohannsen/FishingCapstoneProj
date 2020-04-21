@@ -10,6 +10,8 @@ using FishingCapstone.Models;
 using Microsoft.AspNetCore.Hosting;
 using FishingCapstone.ViewModels;
 using System.IO;
+using MetadataExtractor;
+using MetadataExtractor.Formats.Exif;
 
 namespace FishingCapstone.Controllers
 {
@@ -50,12 +52,24 @@ namespace FishingCapstone.Controllers
             if (ModelState.IsValid)
             {
                 string uniqueFileName = UploadedFile(model);
-
+                var photoPath = "wwwroot/images/" + uniqueFileName;
+                var gps = ImageMetadataReader.ReadMetadata(photoPath)
+                                 .OfType<GpsDirectory>()
+                                 .FirstOrDefault();
+                var location = gps.GetGeoLocation();
+                var photoLat = location.Latitude;
+                var photoLong = location.Longitude;
+                var directories = ImageMetadataReader.ReadMetadata(photoPath);
+                var subIfdDirectory = directories.OfType<ExifSubIfdDirectory>().FirstOrDefault();
+                var photoDate = subIfdDirectory?.GetDescription(ExifDirectoryBase.TagDateTimeOriginal);
                 Photos photo = new Photos
                 {
                     PhotoFile = uniqueFileName,
                     PhotoTripId = model.PhotoTripId,
                     PhotoCaption = model.PhotoCaption,
+                    PhotoLat = photoLat.ToString(),
+                    PhotoLong = photoLong.ToString(),
+                    PhotoDate = photoDate
                 };
                 _context.Add(photo);
                 await _context.SaveChangesAsync();
@@ -96,6 +110,16 @@ namespace FishingCapstone.Controllers
                 return NotFound();
             }
 
+            //var photoPath = "wwwroot/images/" + photos.PhotoFile;
+            //var gps = ImageMetadataReader.ReadMetadata(photoPath)
+            //                 .OfType<GpsDirectory>()
+            //                 .FirstOrDefault();
+            //var location = gps.GetGeoLocation();
+            //var photoLat = location.Latitude;
+            //var photoLong = location.Longitude;
+            //var directories = ImageMetadataReader.ReadMetadata(photoPath);
+            //var subIfdDirectory = directories.OfType<ExifSubIfdDirectory>().FirstOrDefault();
+            //var photoDate = subIfdDirectory?.GetDescription(ExifDirectoryBase.TagDateTimeOriginal);
             return View(photos);
         }
 
