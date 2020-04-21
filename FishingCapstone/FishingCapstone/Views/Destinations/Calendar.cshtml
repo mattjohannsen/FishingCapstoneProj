@@ -9,70 +9,81 @@
     <h1>Calendar By Destination</h1>
 
 <div>
-    <h4>Destination</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinationName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationLat)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinationLat)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationLong)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinationLong)
-        </dd>
-    </dl>
+    <h4>Destination: @Html.DisplayFor(model => model.DestinationName)</h4>
 </div>
 <div>
-    <table>
-        <tr>
-            <td>Species</td>
-            <td>January</td>
-            <td>February</td>
-            <td>March</td>
-            <td>April</td>
-            <td>May</td>
-            <td>June</td>
-            <td>July</td>
-            <td>August</td>
-            <td>September</td>
-            <td>October</td>
-            <td>November</td>
-            <td>December</td>
-        </tr>
-        @foreach (var item in Model.Calendar.CalendarByDestinationRows)
-        {
-    <tr>
-        <td>
-            <p>@item.Species.SpeciesName</p>
-        </td>
-        @for (int i = 0; i < 12; i++)
-        {
-            if (thisMonth == i + 1)
-            {
-                <td>
-                    <p><b>@item.MonthlyRatings[i]</b></p>
-                </td>
-            }
-            else
-            {
-                <td>
-                    <p>@item.MonthlyRatings[i]</p>
-                </td>
-            }
-        }
-    </tr>
-        }
-    </table>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Species</th>
+                <th scope="col">January</th>
+                <th scope="col">February</th>
+                <th scope="col">March</th>
+                <th scope="col">April</th>
+                <th scope="col">May</th>
+                <th scope="col">June</th>
+                <th scope="col">July</th>
+                <th scope="col">August</th>
+                <th scope="col">September</th>
+                <th scope="col">October</th>
+                <th scope="col">November</th>
+                <th scope="col">December</th>
+            </tr>
+            <tbody>
+                @foreach (var item in Model.Calendar.CalendarByDestinationRows)
+                {
+                    <tr class="table-light">
+                        <td>
+                            <p>@item.Species.SpeciesName</p>
+                        </td>
+                        @for (int i = 0; i < 12; i++)
+                        {
+                            if (thisMonth == i + 1)
+                            {
+                                <td>
+                                    @if (item.MonthlyRatings[i] == "Best")
+                                    {
+                                        <span class="badge badge-danger">@item.MonthlyRatings[i]</span>
+                                    }
+                                    else if (item.MonthlyRatings[i] == "Good")
+                                    {
+                                        <span class="badge badge-primary">@item.MonthlyRatings[i]</span>
+                                    }
+                                    else if (item.MonthlyRatings[i] == "Fair")
+                                    {
+                                        <span class="badge badge-success">@item.MonthlyRatings[i]</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-light">@item.MonthlyRatings[i]</span>
+                                    }
+                                </td>
+                            }
+                            else
+                            {                                
+                                <td>
+                                    @if (item.MonthlyRatings[i] == "Best")
+                                    {
+                                        <span class="badge badge-danger">@item.MonthlyRatings[i]</span>
+                                    }
+                                    else if (item.MonthlyRatings[i] == "Good")
+                                    {
+                                        <span class="badge badge-primary">@item.MonthlyRatings[i]</span>
+                                    }
+                                    else if (item.MonthlyRatings[i] == "Fair")
+                                    {
+                                        <span class="badge badge-success">@item.MonthlyRatings[i]</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-light">@item.MonthlyRatings[i]</span>
+                                    }
+                                </td>
+                            }
+                        }
+                    </tr>
+                }
+</table>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.DestinationId">Edit</a> |

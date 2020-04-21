@@ -5,41 +5,13 @@
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-<h1>Details</h1>
+    <h1>Destination Comparison</h1>
 
 <div>
-    <h4>Destination</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinationName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationLat)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinationLat)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationLong)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinationLong)
-        </dd>
-    </dl>
+    <h4><p>Comparing @Model.DestinationName to @Model.DestinationComparision.Destination2.DestinationName in @Model.DestinationComparision.MonthToCompare.MonthName</p></h4>
 </div>
-<div>
-    <p>@Model.DestinationName</p>
-</div>
-<div>
-    <p>@Model.DestinationComparision.Destination2.DestinationName</p>
-</div>
-<div>
-    <p>@Model.DestinationComparision.MonthToCompare.MonthName</p>
-</div>
+
+
 <div>
     <table>
         <tr>
