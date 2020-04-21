@@ -5,55 +5,57 @@
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-<h1>The Best Destinations  To Fish In @Html.DisplayFor(model => model.MonthName)</h1>
+<h1>@Html.DisplayFor(model => model.MonthName): Best Destinations</h1>
 
 <div>
-    <h4>Month</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MonthName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MonthName)
-        </dd>
-    </dl>
-</div>
-<div>
-    <table>
-        <tr>
-            <td>Destination</td>
-            @foreach (var item in Model.BestSpecies)
-            {
-                <td>@item.SpeciesName</td>
-            }
-        </tr>
-        @foreach (var item in Model.CalendarByMonth.CalendarByMonthRows)
-        {
-        <tr>
-            <td>
-                <p>@item.Destination.DestinationName</p>
-            </td>
-            @for (int i = 0; i < Model.BestSpecies.Count; i++)
-            {
-
-
-                if (@item.SpeciesRatings[i] == "Best")
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Destination</th>
+                @foreach (var item in Model.BestSpecies)
                 {
-                    <td>
-                        <p><b>@item.SpeciesRatings[i]</b></p>
-                    </td>
+                    <th scope="col">@item.SpeciesName</th>
                 }
-                else
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CalendarByMonth.CalendarByMonthRows)
+            {
+            <tr>
+                <td>
+                    <p>@item.Destination.DestinationName</p>
+                </td>
+                @for (int i = 0; i < Model.BestSpecies.Count; i++)
                 {
-                    <td>
-                        <p>@item.SpeciesRatings[i]</p>
-                    </td>
-                }
+                    if (@item.SpeciesRatings[i] == "Best")
+                    {
+                        <td>
+                            <span class="badge badge-danger">@item.SpeciesRatings[i]</span>
+                        </td>
+                    }
+                    else if (@item.SpeciesRatings[i] == "Good")
+                    {
+                        <td>
+                            <span class="badge badge-primary">@item.SpeciesRatings[i]</span>
+                        </td>
+                    }
+                    else if (@item.SpeciesRatings[i] == "Fair")
+                    {
+                        <td>
+                            <span class="badge badge-success">@item.SpeciesRatings[i]</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <span class="badge badge-light">@item.SpeciesRatings[i]</span>
+                        </td>
+                    }
 
+                }
+            </tr>
             }
-        </tr>
-        }
+        </tbody>
     </table>
 </div>
 <div>
