@@ -5,72 +5,106 @@
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-<h1>Map of Trip Photos</h1>
+    <h1>Map of the @Html.DisplayNameFor(model => model.TripName) Album</h1>
 
 <div>
-    <h4>Trip</h4>
+    <h4>@Html.DisplayFor(model => model.Destination.DestinationName)</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Explorer)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Explorer.FirstName) @Html.DisplayFor(model => model.Explorer.LastName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Destination)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Destination.DestinationName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TripName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TripName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TripGuideService)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TripGuideService)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Month)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Month.MonthName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TripStart)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TripStart)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TripEnd)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TripEnd)
         </dd>
     </dl>
 </div>
-<table>
-    <tr>
-        <td><h3>Trip Photo Album</h3></td>
-    </tr>
-    @foreach (var item in Model.TripPhotos)
-    {
-        <tr>
-            <td><h3>@item.PhotoCaption</h3></td>
-        </tr>
-        <tr>
-            <td><img src="~/images/@item.PhotoFile" alt="@item.PhotoCaption" width="400"></td>
-        </tr>
+<style>
+    /* Set the size of the div element that contains the map */
+    #map {
+        height: 600px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the web page */
     }
+</style>
+<!--The div element for the map -->
+<div id="map"></div>
+<script>
+    // Initialize and add the map
+    function initMap() {
+        var address = { lat: @Model.Destination.DestinationLat, lng: @Model.Destination.DestinationLong };
+        var map = new google.maps.Map(document.getElementById('map'), { zoom: 12, center: address });
+        @foreach(var item in Model.TripPhotos)
+        {
+            <text>addMarker({
+                coords: { lat: @item.PhotoLat, lng: @item.PhotoLong },
+            content: '<div id="content" style="height:400px; width: 600px;"><h1 id="firstHeading" class="firstHeading">@item.PhotoCaption</h1>' +
+                '<div id="bodyContent">' +
+                '<p>Date: @item.PhotoDate</p>' +
+                    '<p><img src="~/images/@item.PhotoFile" alt="@item.PhotoCaption" width="100%">' +
+                '</p>' +
+                '</div>' +
+                '</div>'
+            });</text>
+        }
+        function addMarker(props) {
+            var marker = new google.maps.Marker({ position: props.coords, map: map });
+            if (props.content) {
+                var infowindow = new google.maps.InfoWindow({
+                    content: props.content
+                });
 
 
-</table>
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            }
+        }
+    }
+</script>
+<!--Load the API from the specified URL
+* The async attribute allows the browser to render the page while the API loads
+* The key parameter will contain your own API key (which is not needed for this tutorial)
+* The callback parameter executes the initMap() function
+-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=@APIKEYS.GoogleAPIKey&callback=initMap">
+</script>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.TripId">Edit</a> |
     <a asp-action="Index">Back to List</a>
