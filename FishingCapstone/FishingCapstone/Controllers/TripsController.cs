@@ -31,6 +31,31 @@ namespace FishingCapstone.Controllers
         }
 
         // GET: Trips/Details/5
+        public async Task<IActionResult> PhotoMap(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var trip = await _context.Trip
+                .Include(t => t.Destination)
+                .Include(t => t.Explorer)
+                .Include(t => t.Month)
+                .FirstOrDefaultAsync(m => m.TripId == id);
+            if (trip == null)
+            {
+                return NotFound();
+            }
+            var tripPhotos = _context.Photos
+                .Where(p => p.PhotoTripId == trip.TripId)
+                .Include(p => p.Trip)
+                .ToList();
+            trip.TripPhotos = tripPhotos;
+            return View(trip);
+        }
+
+        // GET: Trips/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,7 +72,10 @@ namespace FishingCapstone.Controllers
             {
                 return NotFound();
             }
-            var tripPhotos = _context.Photos.Where(p => p.PhotoTripId == trip.TripId).ToList();
+            var tripPhotos = _context.Photos
+                .Where(p => p.PhotoTripId == trip.TripId)
+                .Include(p => p.Trip)
+                .ToList();
             trip.TripPhotos = tripPhotos;
             return View(trip);
         }
