@@ -19,5 +19,7 @@ namespace FishingCapstone.Models
         { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [NotMapped]
+        public List<Trip> Trips { get; set; }
     }
 }
