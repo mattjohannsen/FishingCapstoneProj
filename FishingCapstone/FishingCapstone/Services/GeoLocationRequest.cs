@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using FishingCapstone.Contracts;
 using FishingCapstone.Models;
 
-namespace WeekendWindow.Services
+namespace FishingCapstone.Services
 {
     public class GeoLocationRequest : IGeoCodeRequest
     {

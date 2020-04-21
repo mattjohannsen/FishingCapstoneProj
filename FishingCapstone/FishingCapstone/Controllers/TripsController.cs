@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FishingCapstone.Data;
 using FishingCapstone.Models;
+
+using FishingCapstone.ViewModels;
+using FishingCapstone.Contracts;
 using System.Security.Claims;
 
 namespace FishingCapstone.Controllers

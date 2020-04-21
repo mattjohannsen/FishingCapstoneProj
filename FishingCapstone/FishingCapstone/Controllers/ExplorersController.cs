@@ -58,6 +58,32 @@ namespace FishingCapstone.Controllers
             return View(explorer);
         }
 
+
+        // GET: Explorers/Details/5
+        public async Task<IActionResult> TripMap(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var explorer = await _context.Explorer
+                .Include(e => e.IdentityUser)
+                .FirstOrDefaultAsync(m => m.ExplorerId == id);
+            if (explorer == null)
+            {
+                return NotFound();
+            }
+            var tripList = _context.Trip
+                    .Where(t => t.ExplorerId == id)
+                    .Include(t => t.Destination)
+                    .Include(t => t.Explorer)
+                    .Include(t => t.Month)
+                    .ToList();
+            explorer.Trips = tripList;
+            return View(explorer);
+        }
+
         // GET: Explorers/Create
         public IActionResult Create()
         {
