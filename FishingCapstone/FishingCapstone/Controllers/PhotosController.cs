@@ -33,10 +33,11 @@ namespace FishingCapstone.Controllers
 
         //    return View(await applicationDbContext.ToListAsync());
         //}
-        public async Task<IActionResult> Index()
+        public  IActionResult Index()
         {
-            var photo = await _context.Photos.ToListAsync();
-            return View(photo);
+            var photos =  _context.Photos.Select(p=>p)
+                .Include(p=>p.Trip).ToList();
+            return View(photos);
         }
 
         public IActionResult New()

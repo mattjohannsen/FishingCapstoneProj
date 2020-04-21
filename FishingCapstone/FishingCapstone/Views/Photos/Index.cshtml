@@ -9,14 +9,12 @@
 <p>
     <a asp-action="New" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New</a>
 </p>
-<table class="table table-bordered">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(model => model.PhotoFile)</th>
             <th>@Html.DisplayNameFor(model => model.PhotoCaption)</th>
-            <th>@Html.DisplayNameFor(model => model.PhotoTripId)</th>
-            <th>@Html.DisplayNameFor(model => model.PhotoLat)</th>
-            <th>@Html.DisplayNameFor(model => model.PhotoLong)</th>
+            <th>@Html.DisplayNameFor(model => model.Trip.TripName)</th>
             <th>@Html.DisplayNameFor(model => model.PhotoDate)</th>
         </tr>
     </thead>
@@ -28,9 +26,7 @@
                     <a asp-action="Details" asp-route-id="@photo.PhotosId"><img src="~/images/@photo.PhotoFile" class="rounded-circle" height="40" width="40" asp-append-version="true" /></a>
                 </td>
                 <td><a asp-action="Edit" asp-route-id="@photo.PhotosId">@photo.PhotoCaption</a></td>
-                <td>@photo.PhotoTripId</td>
-                <td>@photo.PhotoLat</td>
-                <td>@photo.PhotoLong</td>
+                <td>@photo.Trip.TripName</td>
                 <td>@photo.PhotoDate</td>
             </tr>
 
