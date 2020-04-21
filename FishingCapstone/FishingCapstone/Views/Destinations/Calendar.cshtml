@@ -16,25 +16,25 @@
         <thead>
             <tr>
                 <th scope="col">Species</th>
-                <th scope="col">January</th>
-                <th scope="col">February</th>
-                <th scope="col">March</th>
-                <th scope="col">April</th>
-                <th scope="col">May</th>
-                <th scope="col">June</th>
-                <th scope="col">July</th>
-                <th scope="col">August</th>
-                <th scope="col">September</th>
-                <th scope="col">October</th>
-                <th scope="col">November</th>
-                <th scope="col">December</th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="1">January</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="2">February</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="3">March</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="4">April</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="5">May</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="6">June</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="7">July</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="8">August</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="9">September</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="10">October</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="11">November</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="12">December</a></th>
             </tr>
             <tbody>
                 @foreach (var item in Model.Calendar.CalendarByDestinationRows)
                 {
                     <tr class="table-light">
                         <td>
-                            <p>@item.Species.SpeciesName</p>
+                            <p><a asp-controller="Species" asp-action="Calendar" asp-route-id="@item.Species.SpeciesId">@item.Species.SpeciesName</a></p>
                         </td>
                         @for (int i = 0; i < 12; i++)
                         {

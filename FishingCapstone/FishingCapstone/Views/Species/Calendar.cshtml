@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-<h1>Calendar by Species</h1>
+    <h1>Let's catch some @Html.DisplayFor(model => model.SpeciesName)!</h1>
 
 <div>
-    <h4>Species</h4>
+    <h4>Here are the best destinations and months.</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -20,31 +20,34 @@
     </dl>
 </div>
 <div>
-    <table>
-        <tr>
-            <td>Destination</td>
-            <td>January</td>
-            <td>February</td>
-            <td>March</td>
-            <td>April</td>
-            <td>May</td>
-            <td>June</td>
-            <td>July</td>
-            <td>August</td>
-            <td>September</td>
-            <td>October</td>
-            <td>November</td>
-            <td>December</td>
-        </tr>
-        @foreach (var item in Model.Calendar.CalendarBySpeciesRows)
-        {
+    <table class="table table-hover">
+        <thead>
             <tr>
+                <th scope="col">Destination</th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="1">January</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="2">February</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="3">March</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="4">April</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="5">May</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="6">June</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="7">July</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="8">August</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="9">September</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="10">October</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="11">November</a></th>
+                <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="12">December</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Calendar.CalendarBySpeciesRows)
+            {
+            <tr class="table-light">
                 <td>
-                    <p>@item.Destination.DestinationName</p>
+                    <p><a asp-controller="Destinations" asp-action="Calendar" asp-route-id="@item.Destination.DestinationId">@item.Destination.DestinationName</a></p>
                 </td>
                 @for (int i = 0; i < 12; i++)
                 {
-                    if (@item.MonthlyRatings[i] == "Best")
+                    @*if (@item.MonthlyRatings[i] == "Best")
                     {
                         <td>
                             <p><b>@item.MonthlyRatings[i]</b></p>
@@ -55,10 +58,35 @@
                         <td>
                             <p>@item.MonthlyRatings[i]</p>
                         </td>
+                    }*@
+                    if (@item.MonthlyRatings[i] == "Best")
+                    {
+                        <td>
+                            <span class="badge badge-danger">@item.MonthlyRatings[i]</span>
+                        </td>
+                    }
+                    else if (@item.MonthlyRatings[i] == "Good")
+                    {
+                        <td>
+                            <span class="badge badge-primary">@item.MonthlyRatings[i]</span>
+                        </td>
+                    }
+                    else if (@item.MonthlyRatings[i] == "Fair")
+                    {
+                        <td>
+                            <span class="badge badge-success">@item.MonthlyRatings[i]</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <span class="badge badge-light">@item.MonthlyRatings[i]</span>
+                        </td>
                     }
                 }
             </tr>
-        }
+            }
+        </tbody>
     </table>
 </div>
 <div>
