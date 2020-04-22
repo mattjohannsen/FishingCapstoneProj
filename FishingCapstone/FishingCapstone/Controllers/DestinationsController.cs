@@ -40,7 +40,7 @@ namespace FishingCapstone.Controllers
             {
                 return NotFound();
             }
-
+            destination.AvailableSpecies = GetDestinationSpecies(destination.DestinationId);
             return View(destination);
         }
 
@@ -63,34 +63,6 @@ namespace FishingCapstone.Controllers
 
             return View(destination);
         }
-
-        //// GET: Viewers/Create
-        //public IActionResult Compare()
-        //{
-        //    ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id");
-        //    ViewData["States"] = new SelectList(_context.State, "StateAbbreviation", "StateName");
-
-        //    return View();
-        //}
-
-        // GET: Destinations/Compare/5
-        //public async Task<IActionResult> Compare(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var destination = await _context.Destination
-        //        .FirstOrDefaultAsync(m => m.DestinationId == id);
-        //    if (destination == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["Destinations"] = new SelectList(_context.Destination, "DestinationId", "DestinationName");
-        //    ViewData["Months"] = new SelectList(_context.Month, "MonthId", "MonthName");
-        //    return View(destination);
-        //}
 
         // GET: Destinations/Compare/5
         public async Task<IActionResult> Compare(int? DestinationId, int? DestinationToCompare, int? MonthId)
@@ -138,48 +110,6 @@ namespace FishingCapstone.Controllers
 
             return View(destination1);
         }
-        //[HttpPost]
-        //public async Task<IActionResult> Compare(int? destination1id, int destination2id, int monthid)
-        //{
-        //    if (destination1id == null) //Check/set first destination
-        //    {
-        //        return NotFound();
-        //    }
-        //    var destination1 = await _context.Destination
-        //        .FirstOrDefaultAsync(d => d.DestinationId == destination1id);
-        //    if (destination1 == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (destination2id == null) //Check/set second destination
-        //    {
-        //        return NotFound();
-        //    }
-        //    var destination2 = await _context.Destination
-        //        .FirstOrDefaultAsync(d => d.DestinationId == destination2id);
-        //    if (destination2 == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    if (monthid == null) //Check/set month
-        //    {
-        //        return NotFound();
-        //    }
-        //    var month = await _context.Month
-        //        .FirstOrDefaultAsync(m => m.MonthId == monthid);
-        //    if (month == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    DestCompareViewModel destCompareViewModel = new DestCompareViewModel();
-        //    destCompareViewModel.Destination1 = destination1;
-        //    destCompareViewModel.Destination2 = destination2;
-        //    destCompareViewModel.Month = month;
-
-        //    return View(destCompareViewModel);
-        //}
 
         // GET: Destinations/Calendar/5
         public async Task<IActionResult> Calendar(int? id)

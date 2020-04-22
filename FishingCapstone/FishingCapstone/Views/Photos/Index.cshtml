@@ -16,19 +16,23 @@
             <th>@Html.DisplayNameFor(model => model.PhotoCaption)</th>
             <th>@Html.DisplayNameFor(model => model.Trip.TripName)</th>
             <th>@Html.DisplayNameFor(model => model.PhotoDate)</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var photo in Model)
         {
-            <tr>
-                <td>
-                    <a asp-action="Details" asp-route-id="@photo.PhotosId"><img src="~/images/@photo.PhotoFile" class="rounded-circle" height="40" width="40" asp-append-version="true" /></a>
-                </td>
-                <td><a asp-action="Edit" asp-route-id="@photo.PhotosId">@photo.PhotoCaption</a></td>
-                <td>@photo.Trip.TripName</td>
-                <td>@photo.PhotoDate</td>
-            </tr>
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@photo.PhotosId"><img src="~/images/@photo.PhotoFile" class="rounded-circle" height="40" width="40" asp-append-version="true" /></a>
+            </td>
+            <td><a asp-action="Edit" asp-route-id="@photo.PhotosId">@photo.PhotoCaption</a></td>
+            <td>@photo.Trip.TripName</td>
+            <td>@photo.PhotoDate</td>
+            <td><a asp-action="Edit" asp-route-id="@photo.PhotosId">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="@photo.PhotosId">Delete</a></td>
+        </tr>
 
         }
     </tbody>

@@ -9,13 +9,13 @@
     <h1>Calendar By Destination</h1>
 
 <div>
-    <h4>Destination: @Html.DisplayFor(model => model.DestinationName)</h4>
+    <h4>Destination: <a asp-action="Details" asp-route-id="@Model.DestinationId">@Html.DisplayFor(model => model.DestinationName)</a></h4>
 </div>
 <div>
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">Species</th>
+                <th scope="col">Available Species</th>
                 <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="1">January</a></th>
                 <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="2">February</a></th>
                 <th scope="col"><a asp-controller="Months" asp-action="Calendar" asp-route-id="3">March</a></th>

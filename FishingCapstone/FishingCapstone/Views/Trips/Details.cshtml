@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.TripName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TripName)
+            <a asp-controller="Trips" asp-action="PhotoMap" asp-route-id="@Model.TripId">@Html.DisplayFor(model => model.TripName)</a>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TripGuideService)
@@ -65,7 +65,7 @@
             <td><h3>@item.PhotoCaption</h3></td>
         </tr>
         <tr>
-            <td><img src="~/images/@item.PhotoFile" alt="@item.PhotoCaption" width="400"></td>
+            <td><a asp-controller="Photos" asp-action="Details" asp-route-id="@item.PhotosId"><img src="~/images/@item.PhotoFile" alt="@item.PhotoCaption" width="400"></a></td>
         </tr>
     }
 

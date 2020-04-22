@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-    <h1>Map of the @Html.DisplayNameFor(model => model.TripName) Album</h1>
+    <h1>Map of the @Html.DisplayFor(model => model.TripName)</h1>
 
 <div>
     <h4>@Html.DisplayFor(model => model.Destination.DestinationName)</h4>
@@ -76,7 +76,7 @@
             content: '<div id="content" style="height:400px; width: 600px;"><h1 id="firstHeading" class="firstHeading">@item.PhotoCaption</h1>' +
                 '<div id="bodyContent">' +
                 '<p>Date: @item.PhotoDate</p>' +
-                    '<p><img src="~/images/@item.PhotoFile" alt="@item.PhotoCaption" width="100%">' +
+                    '<p><a href="~/Photos/Details/@item.PhotosId"><img src="~/images/@item.PhotoFile" alt="@item.PhotoCaption" width="100%"></a>' +
                 '</p>' +
                 '</div>' +
                 '</div>'
