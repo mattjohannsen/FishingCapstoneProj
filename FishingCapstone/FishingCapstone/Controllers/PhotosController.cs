@@ -12,6 +12,7 @@ using FishingCapstone.ViewModels;
 using System.IO;
 using MetadataExtractor;
 using MetadataExtractor.Formats.Exif;
+using System.Security.Claims;
 
 namespace FishingCapstone.Controllers
 {
@@ -35,14 +36,17 @@ namespace FishingCapstone.Controllers
         //}
         public  IActionResult Index()
         {
-            var photos =  _context.Photos.Select(p=>p)
-                .Include(p=>p.Trip).ToList();
+            var photos =  _context.Photos.Where(p=>p.Trip.ExplorerId == GetCurrentExplorer().ExplorerId)
+                .Select(p => p)
+                .Include(p=>p.Trip)
+                .ToList();
             return View(photos);
         }
 
         public IActionResult New()
         {
-            ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripName");
+            //ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripName");
+            ViewData["PhotoTripId"] = new SelectList(_context.Trip.Where(t=>t.ExplorerId == GetCurrentExplorer().ExplorerId), "TripId", "TripName");
             return View();
         }
 
@@ -235,5 +239,13 @@ namespace FishingCapstone.Controllers
         {
             return _context.Photos.Any(e => e.PhotosId == id);
         }
+        private Explorer GetCurrentExplorer()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentExplorer = _context.Explorer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            return currentExplorer;
+        }
+
+
     }
 }
