@@ -58,7 +58,8 @@ namespace FishingCapstone.Controllers
             {
                 return NotFound();
             }
-            ViewData["Months"] = new SelectList(_context.Month, "MonthId", "MonthName");
+            ViewData["MonthId"] = new SelectList(_context.Month, "MonthId", "MonthName");
+            ViewData["DestinationToCompare"] = new SelectList(_context.Destination, "DestinationId", "DestinationName");
 
             return View(destination);
         }
@@ -92,7 +93,7 @@ namespace FishingCapstone.Controllers
         //}
 
         // GET: Destinations/Compare/5
-        public async Task<IActionResult> Compare(int? DestinationId, int? destination2id, int? monthid)
+        public async Task<IActionResult> Compare(int? DestinationId, int? DestinationToCompare, int? MonthId)
         {
             if (DestinationId == null) //Check/set first destination
             {
@@ -105,22 +106,22 @@ namespace FishingCapstone.Controllers
                 return NotFound();
             }
 
-            if (destination2id == null) //Check/set second destination
+            if (DestinationToCompare == null) //Check/set second destination
             {
                 return NotFound();
             }
             var destination2 = await _context.Destination
-                .FirstOrDefaultAsync(d => d.DestinationId == destination2id);
+                .FirstOrDefaultAsync(d => d.DestinationId == DestinationToCompare);
             if (destination2 == null)
             {
                 return NotFound();
             }
-            if (monthid == null) //Check/set month
+            if (MonthId == null) //Check/set month
             {
                 return NotFound();
             }
             var month = await _context.Month
-                .FirstOrDefaultAsync(m => m.MonthId == monthid);
+                .FirstOrDefaultAsync(m => m.MonthId == MonthId);
             if (month == null)
             {
                 return NotFound();

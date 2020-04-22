@@ -28,6 +28,10 @@ namespace FishingCapstone.Models
         public CalendarByDestination Calendar { get; set; }
         [NotMapped]
         public DestinationComparision DestinationComparision { get; set; }
+        [NotMapped]
+        public int MonthId { get; set; }
+        [NotMapped]
+        public int DestinationToCompare { get; set; }
 
     }
 }
