@@ -26,7 +26,13 @@ namespace FishingCapstone.Controllers
         // GET: Trips
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Trip.Include(t => t.Destination).Include(t => t.Explorer).Include(t => t.Month);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentExplorer = _context.Explorer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            var applicationDbContext = _context.Trip
+                .Where(t => t.ExplorerId == currentExplorer.ExplorerId)
+                .Include(t => t.Destination)
+                .Include(t => t.Explorer)
+                .Include(t => t.Month);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -39,6 +45,7 @@ namespace FishingCapstone.Controllers
             }
 
             var trip = await _context.Trip
+                .Where(t => t.ExplorerId == GetCurrentExplorer().ExplorerId)
                 .Include(t => t.Destination)
                 .Include(t => t.Explorer)
                 .Include(t => t.Month)
@@ -48,7 +55,7 @@ namespace FishingCapstone.Controllers
                 return NotFound();
             }
             var tripPhotos = _context.Photos
-                .Where(p => p.PhotoTripId == trip.TripId)
+                .Where(p => p.PhotoTripId == trip.TripId && p.Trip.ExplorerId == GetCurrentExplorer().ExplorerId)
                 .Include(p => p.Trip)
                 .ToList();
             trip.TripPhotos = tripPhotos;
@@ -210,6 +217,13 @@ namespace FishingCapstone.Controllers
         private bool TripExists(int id)
         {
             return _context.Trip.Any(e => e.TripId == id);
+        }
+
+        private Explorer GetCurrentExplorer()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentExplorer = _context.Explorer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            return currentExplorer;
         }
     }
 }

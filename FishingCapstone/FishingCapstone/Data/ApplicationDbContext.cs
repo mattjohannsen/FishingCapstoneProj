@@ -35,7 +35,9 @@ namespace FishingCapstone.Data
                     new Destination { DestinationId = 1, DestinationName = "Cabo San Lucas, MX", DestinationLat = "22.8822", DestinationLong = "-109.91203" },
                     new Destination { DestinationId = 2, DestinationName = "Cozumel, MX", DestinationLat = "20.468355", DestinationLong = "-86.978845" },
                     new Destination { DestinationId = 3, DestinationName = "La Paz, MX", DestinationLat = "24.167785", DestinationLong = "-110.310101" },
-                    new Destination { DestinationId = 4, DestinationName = "West Bend, WI", DestinationLat = "43.412800", DestinationLong = "-88.189249" }
+                    new Destination { DestinationId = 4, DestinationName = "West Bend, WI", DestinationLat = "43.412800", DestinationLong = "-88.189249" },
+                    new Destination { DestinationId = 5, DestinationName = "Newburg, WI", DestinationLat = "43.4317", DestinationLong = "-88.0465" },
+                    new Destination { DestinationId = 6, DestinationName = "Fredonia WI", DestinationLat = "43.4706", DestinationLong = "-87.9506" }
                 );
             builder.Entity<Month>()
                 .HasData(
@@ -686,7 +688,31 @@ namespace FishingCapstone.Data
                     new DestSpeciesMonth { DestSpeciesMonthId = 597, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 9, DSMRatingId = 1 },	//West Bend	September
                     new DestSpeciesMonth { DestSpeciesMonthId = 598, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 10, DSMRatingId = 1 },	//West Bend	October
                     new DestSpeciesMonth { DestSpeciesMonthId = 599, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 11, DSMRatingId = 1 },	//West Bend	November
-                    new DestSpeciesMonth { DestSpeciesMonthId = 600, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 12, DSMRatingId = 1 }	//West Bend	December
+                    new DestSpeciesMonth { DestSpeciesMonthId = 600, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 12, DSMRatingId = 1 },	//West Bend	December
+                    new DestSpeciesMonth { DestSpeciesMonthId = 601, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 1, DSMRatingId = 1 },	//Newburg	January
+                    new DestSpeciesMonth { DestSpeciesMonthId = 602, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 2, DSMRatingId = 1 },	//Newburg	February
+                    new DestSpeciesMonth { DestSpeciesMonthId = 603, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 3, DSMRatingId = 1 },	//Newburg	March
+                    new DestSpeciesMonth { DestSpeciesMonthId = 604, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 4, DSMRatingId = 4 },	//Newburg	April
+                    new DestSpeciesMonth { DestSpeciesMonthId = 605, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 5, DSMRatingId = 1 },	//Newburg	May
+                    new DestSpeciesMonth { DestSpeciesMonthId = 606, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 6, DSMRatingId = 1 },	//Newburg	June
+                    new DestSpeciesMonth { DestSpeciesMonthId = 607, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 7, DSMRatingId = 1 },	//Newburg	July
+                    new DestSpeciesMonth { DestSpeciesMonthId = 608, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 8, DSMRatingId = 1 },	//Newburg	August
+                    new DestSpeciesMonth { DestSpeciesMonthId = 609, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 9, DSMRatingId = 1 },	//Newburg	September
+                    new DestSpeciesMonth { DestSpeciesMonthId = 610, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 10, DSMRatingId = 1 },	//Newburg	October
+                    new DestSpeciesMonth { DestSpeciesMonthId = 611, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 11, DSMRatingId = 1 },	//Newburg	November
+                    new DestSpeciesMonth { DestSpeciesMonthId = 612, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 12, DSMRatingId = 1 },	//Newburg	December
+                    new DestSpeciesMonth { DestSpeciesMonthId = 613, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 1, DSMRatingId = 1 },	//Fredonia	January
+                    new DestSpeciesMonth { DestSpeciesMonthId = 614, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 2, DSMRatingId = 1 },	//Fredonia	February
+                    new DestSpeciesMonth { DestSpeciesMonthId = 615, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 3, DSMRatingId = 1 },	//Fredonia	March
+                    new DestSpeciesMonth { DestSpeciesMonthId = 616, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 4, DSMRatingId = 4 },	//Fredonia	April
+                    new DestSpeciesMonth { DestSpeciesMonthId = 617, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 5, DSMRatingId = 1 },	//Fredonia	May
+                    new DestSpeciesMonth { DestSpeciesMonthId = 618, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 6, DSMRatingId = 1 },	//Fredonia	June
+                    new DestSpeciesMonth { DestSpeciesMonthId = 619, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 7, DSMRatingId = 1 },	//Fredonia	July
+                    new DestSpeciesMonth { DestSpeciesMonthId = 620, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 8, DSMRatingId = 1 },	//Fredonia	August
+                    new DestSpeciesMonth { DestSpeciesMonthId = 621, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 9, DSMRatingId = 1 },	//Fredonia	September
+                    new DestSpeciesMonth { DestSpeciesMonthId = 622, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 10, DSMRatingId = 1 },	//Fredonia	October
+                    new DestSpeciesMonth { DestSpeciesMonthId = 623, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 11, DSMRatingId = 1 },	//Fredonia	November
+                    new DestSpeciesMonth { DestSpeciesMonthId = 624, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 12, DSMRatingId = 1 }	//Fredonia	December
 
                 );
         }

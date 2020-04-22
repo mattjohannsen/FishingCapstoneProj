@@ -4873,6 +4873,198 @@ namespace FishingCapstone.Migrations
                             DSMMonthId = 12,
                             DSMRatingId = 1,
                             DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 601,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 1,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 602,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 2,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 603,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 3,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 604,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 4,
+                            DSMRatingId = 4,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 605,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 5,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 606,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 6,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 607,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 7,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 608,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 8,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 609,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 9,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 610,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 10,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 611,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 11,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 612,
+                            DSMDestinationId = 5,
+                            DSMMonthId = 12,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 613,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 1,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 614,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 2,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 615,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 3,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 616,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 4,
+                            DSMRatingId = 4,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 617,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 5,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 618,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 6,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 619,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 7,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 620,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 8,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 621,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 9,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 622,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 10,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 623,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 11,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
+                        },
+                        new
+                        {
+                            DestSpeciesMonthId = 624,
+                            DSMDestinationId = 6,
+                            DSMMonthId = 12,
+                            DSMRatingId = 1,
+                            DSMSpeciesId = 11
                         });
                 });
 
@@ -4924,6 +5116,20 @@ namespace FishingCapstone.Migrations
                             DestinationLat = "43.412800",
                             DestinationLong = "-88.189249",
                             DestinationName = "West Bend, WI"
+                        },
+                        new
+                        {
+                            DestinationId = 5,
+                            DestinationLat = "43.4317",
+                            DestinationLong = "-88.0465",
+                            DestinationName = "Newburg, WI"
+                        },
+                        new
+                        {
+                            DestinationId = 6,
+                            DestinationLat = "43.4706",
+                            DestinationLong = "-87.9506",
+                            DestinationName = "Fredonia WI"
                         });
                 });
 
@@ -5306,15 +5512,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "aade6681-dcb7-4d6d-be22-8e569ab2611c",
-                            ConcurrencyStamp = "80437b28-d20e-429c-8c3b-a100885b6628",
+                            Id = "914de080-08d8-452a-905a-240813b48692",
+                            ConcurrencyStamp = "dc10f720-8227-4707-b0bb-5f4a6fd4e87c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "fb0655d9-5782-4d00-bf59-15e4fe8dcc3b",
-                            ConcurrencyStamp = "b47b9538-6dd2-4b18-8ba2-c01db8ce45e6",
+                            Id = "28acf206-cc9e-4366-9887-f507f56487bb",
+                            ConcurrencyStamp = "b1f72a0d-0b12-447f-b203-e1ec4f71ae2e",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });
