@@ -11,34 +11,34 @@
     <h4>Photos</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Trip)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Trip.TripName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PhotoCaption)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PhotoCaption)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PhotoLat)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PhotoLat)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PhotoLong)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PhotoLong)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PhotoDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PhotoDate)
         </dd>
     </dl>
@@ -46,6 +46,53 @@
 <div>
     <img src="~/images/@Html.DisplayFor(model => model.PhotoFile)" width="600" alt="@Html.DisplayFor(model => model.PhotoCaption)">
 </div>
+<style>
+    /* Set the size of the div element that contains the map */
+    #map {
+        height: 600px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the web page */
+    }
+</style>
+<!--The div element for the map -->
+<div id="map"></div>
+<script>
+    // Initialize and add the map
+    function initMap() {
+        var address = { lat: @Html.DisplayFor(model => model.PhotoLat), lng: @Html.DisplayFor(model => model.PhotoLong) };
+        var map = new google.maps.Map(document.getElementById('map'), { zoom: 12, center: address });
+        addMarker({
+                coords: { lat: @Html.DisplayFor(model => model.PhotoLat), lng: @Html.DisplayFor(model => model.PhotoLong) },
+            content: '<div id="content" style="height:400px; width: 600px;"><h1 id="firstHeading" class="firstHeading">@Html.DisplayFor(model => model.PhotoCaption)</h1>' +
+                '<div id="bodyContent">' +
+                '<p>Date: @Html.DisplayFor(model => model.PhotoDate)</p>' +
+                    '<p><img src="~/images/@Html.DisplayFor(model => model.PhotoFile)" alt="@Html.DisplayFor(model => model.PhotoCaption)" width="100%">' +
+                '</p>' +
+                '</div>' +
+                '</div>'
+            });
+        function addMarker(props) {
+            var marker = new google.maps.Marker({ position: props.coords, map: map });
+            if (props.content) {
+                var infowindow = new google.maps.InfoWindow({
+                    content: props.content
+                });
+
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            }
+        }
+    }
+</script>
+<!--Load the API from the specified URL
+* The async attribute allows the browser to render the page while the API loads
+* The key parameter will contain your own API key (which is not needed for this tutorial)
+* The callback parameter executes the initMap() function
+-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=@APIKEYS.GoogleAPIKey&callback=initMap">
+</script>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.PhotosId">Edit</a> |
     <a asp-action="Index">Back to List</a>
