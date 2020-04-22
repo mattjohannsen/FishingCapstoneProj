@@ -6,10 +6,10 @@
     int thisMonth = DateTime.Now.Month;
 }
 
-    <h1>Calendar By Destination</h1>
+    <h1>Trends Calendar By Destination</h1>
 
 <div>
-    <h4>Destination: <a asp-action="Details" asp-route-id="@Model.DestinationId">@Html.DisplayFor(model => model.DestinationName)</a></h4>
+    <h4>Destination: <a asp-action="Details" asp-route-id="@Model.DestinationId">@Html.DisplayFor(model => model.DestinationName)</a> - <a asp-action="SelectCompare" asp-route-id="@Model.DestinationId">Compare to Another</a></h4>
 </div>
 <div>
     <table class="table table-hover">

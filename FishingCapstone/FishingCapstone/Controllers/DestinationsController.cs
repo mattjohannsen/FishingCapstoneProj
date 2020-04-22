@@ -59,7 +59,7 @@ namespace FishingCapstone.Controllers
                 return NotFound();
             }
             ViewData["MonthId"] = new SelectList(_context.Month, "MonthId", "MonthName");
-            ViewData["DestinationToCompare"] = new SelectList(_context.Destination, "DestinationId", "DestinationName");
+            ViewData["DestinationToCompare"] = new SelectList(_context.Destination.Where(d=>d.DestinationId != destination.DestinationId), "DestinationId", "DestinationName");
 
             return View(destination);
         }

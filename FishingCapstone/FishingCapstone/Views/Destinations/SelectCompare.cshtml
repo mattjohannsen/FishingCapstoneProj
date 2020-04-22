@@ -7,46 +7,40 @@
 
 <h1>Compare Two Destinations by Month</h1>
 
-<h4>Destination</h4>
+<h4>Comparing: @Model.DestinationName</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Compare" method="post">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+<form asp-action="Compare" method="post">
+    <table class="table table-hover">
 
-            @*<div class="form-group">
-            <label class="control-label">First Destination: @Model.DestinationName</label>
-            <input type="hidden" asp-for="DestinationId" />
-        </div>*@
-            <input type="hidden" asp-for="DestinationId" />
-            @Html.Hidden("DestinationId")
-            <div class="form-group">Comparing: @Model.DestinationName</div>
-            <div class="form-group">To Second Destination:</div>
-            <div class="form-group">
-                <label asp-for="DestinationToCompare" class="control-label"></label>
-                <select asp-for="DestinationToCompare" class="form-control" asp-items="ViewBag.DestinationToCompare"></select>
-                <span asp-validation-for="DestinationToCompare" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-            <label class="control-label">To Second Destination: </label>
-            <input type="number" name="destination2id" class="form-control" />
-        </div>*@
-            @*<div class="form-group">
-            <label class="control-label">Month: </label>
-            <input type="number" name="monthid" class="form-control" />
-        </div>*@
-            <div class="form-group">
-                <label asp-for="MonthId" class="control-label"></label>
-                <select asp-for="MonthId" class="form-control" asp-items="ViewBag.MonthId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Show Comparison" class="btn btn-primary" />
-            </div>
-        </form>
+        <tr>
+            <td>
+                <input type="hidden" asp-for="DestinationId" />
+                @Html.Hidden("DestinationId")
+                <div class="form-group">To Second Destination:</div>
+                <div class="form-group">
+                    <select asp-for="DestinationToCompare" class="form-control" asp-items="ViewBag.DestinationToCompare"></select>
+                    <span asp-validation-for="DestinationToCompare" class="text-danger"></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label class="control-label">In the month of:</label>
+                    <select asp-for="MonthId" class="form-control" asp-items="ViewBag.MonthId"></select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Show Comparison" class="btn btn-primary" />
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
+    <div>
+        <a asp-action="Index">Back to List</a>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

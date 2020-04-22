@@ -10,41 +10,40 @@
 @*<p>
     <a asp-action="Create">Create New</a>
 </p>*@
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.DestinationName)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.DestinationLat)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.DestinationLong)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-action="Calendar" asp-route-id="@item.DestinationId">@Html.DisplayFor(modelItem => item.DestinationName)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DestinationLat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DestinationLong)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DestinationId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DestinationId">Details</a> |
-                <a asp-action="Calendar" asp-route-id="@item.DestinationId">Calendar</a> |
-                <a asp-action="SelectCompare" asp-route-id="@item.DestinationId">Compare</a> |
-                <a asp-action="Delete" asp-route-id="@item.DestinationId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Calendar" asp-route-id="@item.DestinationId">@Html.DisplayFor(modelItem => item.DestinationName)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DestinationLat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DestinationLong)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.DestinationId">Details</a> |
+                    <a asp-action="Calendar" asp-route-id="@item.DestinationId">Calendar</a> |
+                    <a asp-action="SelectCompare" asp-route-id="@item.DestinationId">Compare</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
