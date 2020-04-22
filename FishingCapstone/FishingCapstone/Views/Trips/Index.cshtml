@@ -5,69 +5,64 @@
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Your Fishing Trips</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Explorer)
-            </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Destination)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.TripName)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.TripGuideService)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Month)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.TripStart)
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.TripEnd)
             </th>
-            <th></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Explorer.ExplorerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destination.DestinationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TripName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TripGuideService)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Month.MonthId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TripStart)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TripEnd)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TripId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TripId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TripId">Delete</a> |
-                <a asp-action="PhotoMap" asp-route-id="@item.TripId">See Map</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination.DestinationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripGuideService)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Month.MonthName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripEnd)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TripId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TripId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TripId">Delete</a> |
+                    <a asp-action="PhotoMap" asp-route-id="@item.TripId">See Map</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
