@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishingCapstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200422143718_Initial")]
+    [Migration("20200423141944_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -5077,6 +5077,9 @@ namespace FishingCapstone.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("DestinationExample")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DestinationLat")
                         .HasColumnType("nvarchar(max)");
 
@@ -5324,6 +5327,12 @@ namespace FishingCapstone.Migrations
                     b.Property<string>("SpeciesName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Thumbnail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrophyExample")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("SpeciesId");
 
                     b.ToTable("Species");
@@ -5332,117 +5341,140 @@ namespace FishingCapstone.Migrations
                         new
                         {
                             SpeciesId = 1,
-                            SpeciesName = "Amberjack"
+                            SpeciesName = "Amberjack",
+                            Thumbnail = "amberjack.jpg"
                         },
                         new
                         {
                             SpeciesId = 2,
-                            SpeciesName = "Barracuda"
+                            SpeciesName = "Barracuda",
+                            Thumbnail = "barracuda.jpg"
                         },
                         new
                         {
                             SpeciesId = 3,
-                            SpeciesName = "Bonito"
+                            SpeciesName = "Bonito",
+                            Thumbnail = "bonito.jpg"
                         },
                         new
                         {
                             SpeciesId = 4,
-                            SpeciesName = "Cabrilla"
+                            SpeciesName = "Cabrilla",
+                            Thumbnail = "cabrilla.jpg"
                         },
                         new
                         {
                             SpeciesId = 5,
-                            SpeciesName = "Grouper"
+                            SpeciesName = "Grouper",
+                            Thumbnail = "grouper.jpg"
                         },
                         new
                         {
                             SpeciesId = 6,
-                            SpeciesName = "Jack Crevalle"
+                            SpeciesName = "Jack Crevalle",
+                            Thumbnail = "jackcreavalle.jpg"
                         },
                         new
                         {
                             SpeciesId = 7,
-                            SpeciesName = "Kingfish"
+                            SpeciesName = "Kingfish",
+                            Thumbnail = "kingfish.jpg"
                         },
                         new
                         {
                             SpeciesId = 8,
-                            SpeciesName = "Mackerel - Sierra"
+                            SpeciesName = "Mackerel - Sierra",
+                            Thumbnail = "mackeralsierra.jpg"
                         },
                         new
                         {
                             SpeciesId = 9,
-                            SpeciesName = "Mahi Mahi - Dorado"
+                            SpeciesName = "Mahi Mahi - Dorado",
+                            Thumbnail = "mahimahi.jpg"
                         },
                         new
                         {
                             SpeciesId = 10,
-                            SpeciesName = "Marlin -Black"
+                            SpeciesName = "Marlin - Black",
+                            Thumbnail = "marlinblack.jpg"
                         },
                         new
                         {
                             SpeciesId = 11,
-                            SpeciesName = "Marlin - Blue"
+                            SpeciesName = "Marlin - Blue",
+                            Thumbnail = "marlinblue.jpg"
                         },
                         new
                         {
                             SpeciesId = 12,
-                            SpeciesName = "Marlin - Striped"
+                            SpeciesName = "Marlin - Striped",
+                            Thumbnail = "marlinstriped.jpg"
                         },
                         new
                         {
                             SpeciesId = 13,
-                            SpeciesName = "Marlin - White"
+                            SpeciesName = "Marlin - White",
+                            Thumbnail = "marlinwhite.jpg"
                         },
                         new
                         {
                             SpeciesId = 14,
-                            SpeciesName = "Pargo - Dogtooth Snapper"
+                            SpeciesName = "Pargo - Dogtooth Snapper",
+                            Thumbnail = "pargo.jpg"
                         },
                         new
                         {
                             SpeciesId = 15,
-                            SpeciesName = "Red Snapper"
+                            SpeciesName = "Red Snapper",
+                            Thumbnail = "redsnapper.jpg"
                         },
                         new
                         {
                             SpeciesId = 16,
-                            SpeciesName = "Roosterfish"
+                            SpeciesName = "Roosterfish",
+                            Thumbnail = "roosterfish.jpg"
                         },
                         new
                         {
                             SpeciesId = 17,
-                            SpeciesName = "Sailfish"
+                            SpeciesName = "Sailfish",
+                            Thumbnail = "sailfish.jpg"
                         },
                         new
                         {
                             SpeciesId = 18,
-                            SpeciesName = "Shark"
+                            SpeciesName = "Shark",
+                            Thumbnail = "shark.jpg"
                         },
                         new
                         {
                             SpeciesId = 19,
-                            SpeciesName = "Skipjack"
+                            SpeciesName = "Skipjack",
+                            Thumbnail = "skipjack.jpg"
                         },
                         new
                         {
                             SpeciesId = 20,
-                            SpeciesName = "Snook"
+                            SpeciesName = "Snook",
+                            Thumbnail = "snook.jpg"
                         },
                         new
                         {
                             SpeciesId = 21,
-                            SpeciesName = "Tuna"
+                            SpeciesName = "Tuna",
+                            Thumbnail = "tunayellowfin.jpg"
                         },
                         new
                         {
                             SpeciesId = 22,
-                            SpeciesName = "Wahoo"
+                            SpeciesName = "Wahoo",
+                            Thumbnail = "wahoo.jpg"
                         },
                         new
                         {
                             SpeciesId = 23,
-                            SpeciesName = "Yellowtail"
+                            SpeciesName = "Yellowtail",
+                            Thumbnail = "yellowtail.jpg"
                         });
                 });
 
@@ -5514,15 +5546,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "914de080-08d8-452a-905a-240813b48692",
-                            ConcurrencyStamp = "dc10f720-8227-4707-b0bb-5f4a6fd4e87c",
+                            Id = "0fd485eb-bac8-46ef-8220-63ccba1853d8",
+                            ConcurrencyStamp = "b9c24c51-533d-4707-99e8-95267d9e581d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "28acf206-cc9e-4366-9887-f507f56487bb",
-                            ConcurrencyStamp = "b1f72a0d-0b12-447f-b203-e1ec4f71ae2e",
+                            Id = "2de92753-9e85-4761-bd61-9d18e9c12dc1",
+                            ConcurrencyStamp = "0526acbb-b795-48c0-bc13-463f7b174e6d",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

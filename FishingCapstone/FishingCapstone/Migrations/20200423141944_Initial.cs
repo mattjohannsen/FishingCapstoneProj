@@ -54,7 +54,8 @@ namespace FishingCapstone.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DestinationName = table.Column<string>(nullable: true),
                     DestinationLat = table.Column<string>(nullable: true),
-                    DestinationLong = table.Column<string>(nullable: true)
+                    DestinationLong = table.Column<string>(nullable: true),
+                    DestinationExample = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,7 +95,9 @@ namespace FishingCapstone.Migrations
                 {
                     SpeciesId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SpeciesName = table.Column<string>(nullable: true)
+                    SpeciesName = table.Column<string>(nullable: true),
+                    Thumbnail = table.Column<string>(nullable: true),
+                    TrophyExample = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -356,21 +359,21 @@ namespace FishingCapstone.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "28acf206-cc9e-4366-9887-f507f56487bb", "b1f72a0d-0b12-447f-b203-e1ec4f71ae2e", "Explorer", "EXPLORER" },
-                    { "914de080-08d8-452a-905a-240813b48692", "dc10f720-8227-4707-b0bb-5f4a6fd4e87c", "Admin", "ADMIN" }
+                    { "2de92753-9e85-4761-bd61-9d18e9c12dc1", "0526acbb-b795-48c0-bc13-463f7b174e6d", "Explorer", "EXPLORER" },
+                    { "0fd485eb-bac8-46ef-8220-63ccba1853d8", "b9c24c51-533d-4707-99e8-95267d9e581d", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Destination",
-                columns: new[] { "DestinationId", "DestinationLat", "DestinationLong", "DestinationName" },
+                columns: new[] { "DestinationId", "DestinationExample", "DestinationLat", "DestinationLong", "DestinationName" },
                 values: new object[,]
                 {
-                    { 6, "43.4706", "-87.9506", "Fredonia WI" },
-                    { 5, "43.4317", "-88.0465", "Newburg, WI" },
-                    { 1, "22.8822", "-109.91203", "Cabo San Lucas, MX" },
-                    { 3, "24.167785", "-110.310101", "La Paz, MX" },
-                    { 4, "43.412800", "-88.189249", "West Bend, WI" },
-                    { 2, "20.468355", "-86.978845", "Cozumel, MX" }
+                    { 6, null, "43.4706", "-87.9506", "Fredonia WI" },
+                    { 5, null, "43.4317", "-88.0465", "Newburg, WI" },
+                    { 1, null, "22.8822", "-109.91203", "Cabo San Lucas, MX" },
+                    { 3, null, "24.167785", "-110.310101", "La Paz, MX" },
+                    { 4, null, "43.412800", "-88.189249", "West Bend, WI" },
+                    { 2, null, "20.468355", "-86.978845", "Cozumel, MX" }
                 });
 
             migrationBuilder.InsertData(
@@ -405,32 +408,32 @@ namespace FishingCapstone.Migrations
 
             migrationBuilder.InsertData(
                 table: "Species",
-                columns: new[] { "SpeciesId", "SpeciesName" },
+                columns: new[] { "SpeciesId", "SpeciesName", "Thumbnail", "TrophyExample" },
                 values: new object[,]
                 {
-                    { 23, "Yellowtail" },
-                    { 15, "Red Snapper" },
-                    { 22, "Wahoo" },
-                    { 21, "Tuna" },
-                    { 20, "Snook" },
-                    { 19, "Skipjack" },
-                    { 18, "Shark" },
-                    { 17, "Sailfish" },
-                    { 16, "Roosterfish" },
-                    { 14, "Pargo - Dogtooth Snapper" },
-                    { 4, "Cabrilla" },
-                    { 12, "Marlin - Striped" },
-                    { 11, "Marlin - Blue" },
-                    { 10, "Marlin -Black" },
-                    { 9, "Mahi Mahi - Dorado" },
-                    { 8, "Mackerel - Sierra" },
-                    { 7, "Kingfish" },
-                    { 6, "Jack Crevalle" },
-                    { 5, "Grouper" },
-                    { 3, "Bonito" },
-                    { 1, "Amberjack" },
-                    { 13, "Marlin - White" },
-                    { 2, "Barracuda" }
+                    { 23, "Yellowtail", "yellowtail.jpg", null },
+                    { 15, "Red Snapper", "redsnapper.jpg", null },
+                    { 22, "Wahoo", "wahoo.jpg", null },
+                    { 21, "Tuna", "tunayellowfin.jpg", null },
+                    { 20, "Snook", "snook.jpg", null },
+                    { 19, "Skipjack", "skipjack.jpg", null },
+                    { 18, "Shark", "shark.jpg", null },
+                    { 17, "Sailfish", "sailfish.jpg", null },
+                    { 16, "Roosterfish", "roosterfish.jpg", null },
+                    { 14, "Pargo - Dogtooth Snapper", "pargo.jpg", null },
+                    { 4, "Cabrilla", "cabrilla.jpg", null },
+                    { 12, "Marlin - Striped", "marlinstriped.jpg", null },
+                    { 11, "Marlin - Blue", "marlinblue.jpg", null },
+                    { 10, "Marlin - Black", "marlinblack.jpg", null },
+                    { 9, "Mahi Mahi - Dorado", "mahimahi.jpg", null },
+                    { 8, "Mackerel - Sierra", "mackeralsierra.jpg", null },
+                    { 7, "Kingfish", "kingfish.jpg", null },
+                    { 6, "Jack Crevalle", "jackcreavalle.jpg", null },
+                    { 5, "Grouper", "grouper.jpg", null },
+                    { 3, "Bonito", "bonito.jpg", null },
+                    { 1, "Amberjack", "amberjack.jpg", null },
+                    { 13, "Marlin - White", "marlinwhite.jpg", null },
+                    { 2, "Barracuda", "barracuda.jpg", null }
                 });
 
             migrationBuilder.InsertData(

@@ -16,6 +16,7 @@ namespace FishingCapstone.Models
         public string DestinationLat { get; set; }
         [Display(Name = "Longitude")]
         public string DestinationLong { get; set; }
+        public string DestinationExample { get; set; }
         [NotMapped]
         public List<Species> AvailableSpecies { get; set; }
         [NotMapped]

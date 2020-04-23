@@ -12,6 +12,8 @@ namespace FishingCapstone.Models
         public int SpeciesId { get; set; }
         [Display(Name = "Species")]
         public string SpeciesName { get; set; }
+        public string Thumbnail { get; set; }
+        public string TrophyExample { get; set; }
         [NotMapped]
         public List<Destination> BestDestinations { get; set; }
         [NotMapped]
