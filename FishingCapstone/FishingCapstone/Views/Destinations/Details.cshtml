@@ -9,27 +9,6 @@
 
 <div>
     <h4>@Html.DisplayFor(model => model.DestinationName)</h4>
-    @*<hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DestinationName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationLat)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DestinationLat)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinationLong)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DestinationLong)
-        </dd>
-    </dl>*@
 </div>
 <style>
     /* Set the size of the div element that contains the map */
@@ -80,21 +59,26 @@
 <table class="table table-hover">
     <thead>
         <tr>
+            <th scope="col"></th>
             <th scope="col">Available Species for: @Html.DisplayFor(model => model.DestinationName)</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.AvailableSpecies)
         {
-            <tr>
-                <td>
-                    <a asp-controller="Species" asp-action="Calendar" asp-route-id="@item.SpeciesId">@item.SpeciesName</a>
-                </td>
-            </tr>
+        <tr>
+
+            <td>
+                <a asp-controller="Species" asp-action="Calendar" asp-route-id="@item.SpeciesId"><img src="~/images/thumbnails/@item.Thumbnail" alt="@item.SpeciesName" width="90"></a>
+            </td>
+            <td>
+                <a asp-controller="Species" asp-action="Calendar" asp-route-id="@item.SpeciesId">@item.SpeciesName</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.DestinationId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Destinations List</a>
 </div>
