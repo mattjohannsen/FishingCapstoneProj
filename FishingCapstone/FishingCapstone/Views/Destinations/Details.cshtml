@@ -67,7 +67,6 @@
         @foreach (var item in Model.AvailableSpecies)
         {
         <tr>
-
             <td>
                 <a asp-controller="Species" asp-action="Calendar" asp-route-id="@item.SpeciesId"><img src="~/images/thumbnails/@item.Thumbnail" alt="@item.SpeciesName" width="90"></a>
             </td>

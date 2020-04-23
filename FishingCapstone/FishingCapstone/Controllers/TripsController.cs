@@ -86,9 +86,18 @@ namespace FishingCapstone.Controllers
             trip.TripPhotos = tripPhotos;
             return View(trip);
         }
+        // GET: Trips/Create
+        public IActionResult Create()
+        {
+            var explorer = GetCurrentExplorer();
+            ViewData["ExplorerId"] = explorer.ExplorerId;
+            ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationName");
+            ViewData["TripMonthId"] = new SelectList(_context.Month, "MonthId", "MonthName");
+            return View();
+        }
 
         // GET: Trips/Create
-        public IActionResult Create(int? DestinationId, int? MonthId)
+        public IActionResult CreateFromComparison(int? DestinationId, int? MonthId)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var explorer = _context.Explorer.Where(e => e.IdentityUser.Id == userId).FirstOrDefault();
@@ -109,16 +118,10 @@ namespace FishingCapstone.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                //var explorer = _context.Explorer.Where(e => e.IdentityUser.Id == userId).FirstOrDefault();
-                //trip.ExplorerId = explorer.ExplorerId;
                 _context.Add(trip);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationId", trip.DestinationId);
-            //ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId", trip.ExplorerId);
-            //ViewData["TripMonthId"] = new SelectList(_context.Month, "MonthId", "MonthId", trip.TripMonthId);
             return View(trip);
         }
 
