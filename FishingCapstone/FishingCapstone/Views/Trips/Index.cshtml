@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
+    var tempExplorer = 1;
 }
 
 <h1>Your Fishing Trips</h1>
@@ -37,32 +38,36 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Destination.DestinationName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TripName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TripGuideService)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Month.MonthName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TripStart)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TripEnd)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.TripId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.TripId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.TripId">Delete</a> |
-                    <a asp-action="PhotoMap" asp-route-id="@item.TripId">See Map</a>
-                </td>
-            </tr>
+        tempExplorer = item.Explorer.ExplorerId;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destination.DestinationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripGuideService)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Month.MonthName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripEnd)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TripId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TripId">Album</a> |
+                <a asp-action="Delete" asp-route-id="@item.TripId">Delete</a> |
+                <a asp-action="PhotoMap" asp-route-id="@item.TripId">See Map</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
+<div>
+    <a asp-controller="Explorers" asp-action="TripMap" asp-route-id="@tempExplorer">See All My Trips On Map</a>
+</div>

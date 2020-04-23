@@ -14,7 +14,10 @@
                 <th scope="col">Destination</th>
                 @foreach (var item in Model.BestSpecies)
                 {
-                    <th scope="col"><a asp-controller="Species" asp-action="Calendar" asp-route-id="@item.SpeciesId">@item.SpeciesName</a></th>
+            <th scope="col">
+                <a asp-controller="Species" asp-action="Calendar" asp-route-id="@item.SpeciesId">@item.SpeciesName</a>
+                <img src="~/images/thumbnails/@item.Thumbnail" alt="@item.SpeciesName" width="90">
+            </th>
                 }
             </tr>
         </thead>
