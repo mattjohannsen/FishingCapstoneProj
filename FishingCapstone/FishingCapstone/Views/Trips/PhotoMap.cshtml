@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-    <h1>Map of the @Html.DisplayFor(model => model.TripName)</h1>
+    <h1>Map View of the @Html.DisplayFor(model => model.TripName) Album</h1>
 
 <div>
     <h4>@Html.DisplayFor(model => model.Destination.DestinationName)</h4>
@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.TripName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TripName)
+            <a asp-action="Details" asp-route-id="@Model.TripId">@Html.DisplayFor(model => model.TripName)</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TripGuideService)
