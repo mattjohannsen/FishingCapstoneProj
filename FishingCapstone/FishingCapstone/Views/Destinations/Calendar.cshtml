@@ -41,7 +41,7 @@
                 <td>
                     <p>
                         <a asp-controller="Species" asp-action="Calendar" asp-route-id="@item.Species.SpeciesId">
-                            <img src="~/images/thumbnails/@item.Species.Thumbnail" alt="Smiley face" width="90">
+                            <img src="~/images/thumbnails/@item.Species.Thumbnail" alt="@item.Species.SpeciesName" width="90">
                         </a>
                     </p>
                 </td>
