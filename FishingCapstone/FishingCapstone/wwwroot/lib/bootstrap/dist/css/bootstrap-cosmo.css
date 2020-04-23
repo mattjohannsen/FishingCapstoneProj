@@ -10500,3 +10500,13 @@ body {
   font-size: 8px;
   line-height: 8px;
 }
+.responsiveimg {
+    max-width: 100%;
+    height: auto;
+}
+
+div.photodetails {
+    max-width: 1000px;
+    margin: auto;
+    border: 3px solid #73AD21;
+}

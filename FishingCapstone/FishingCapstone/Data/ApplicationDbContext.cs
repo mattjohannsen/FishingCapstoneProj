@@ -72,7 +72,7 @@ namespace FishingCapstone.Data
                     new Species { SpeciesId = 7, SpeciesName = "Kingfish" },
                     new Species { SpeciesId = 8, SpeciesName = "Mackerel - Sierra" },
                     new Species { SpeciesId = 9, SpeciesName = "Mahi Mahi - Dorado" },
-                    new Species { SpeciesId = 10, SpeciesName = "Marlin -Black" },
+                    new Species { SpeciesId = 10, SpeciesName = "Marlin - Black" },
                     new Species { SpeciesId = 11, SpeciesName = "Marlin - Blue" },
                     new Species { SpeciesId = 12, SpeciesName = "Marlin - Striped" },
                     new Species { SpeciesId = 13, SpeciesName = "Marlin - White" },
