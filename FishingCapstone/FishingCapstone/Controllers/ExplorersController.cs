@@ -22,14 +22,13 @@ namespace FishingCapstone.Controllers
         }
 
         // GET: Explorers
-        public async Task<IActionResult> Index()
+        public  IActionResult Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var currentExplorer = _context.Explorer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
             if (currentExplorer != null)
             {
-                var applicationDbContext = _context.Explorer.Include(e => e.IdentityUser).Where(e => e.IdentityUser.Id == userId);
-                return View(await applicationDbContext.ToListAsync());
+                return View(currentExplorer);
             }
             else
             {

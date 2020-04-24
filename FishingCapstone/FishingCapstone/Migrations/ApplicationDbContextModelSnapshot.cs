@@ -5544,15 +5544,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0fd485eb-bac8-46ef-8220-63ccba1853d8",
-                            ConcurrencyStamp = "b9c24c51-533d-4707-99e8-95267d9e581d",
+                            Id = "0891ea18-9d40-41fe-a321-046e571f2a10",
+                            ConcurrencyStamp = "806f8514-82a8-4b8a-b2e0-cca845740846",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "2de92753-9e85-4761-bd61-9d18e9c12dc1",
-                            ConcurrencyStamp = "0526acbb-b795-48c0-bc13-463f7b174e6d",
+                            Id = "1d45c4a6-2f61-4378-93d8-6e0b183215a8",
+                            ConcurrencyStamp = "28de573c-c9b7-4223-a260-2a3daf82ae14",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

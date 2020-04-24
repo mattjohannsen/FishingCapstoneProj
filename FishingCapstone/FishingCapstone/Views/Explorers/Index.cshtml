@@ -1,49 +1,58 @@
-﻿@model IEnumerable<FishingCapstone.Models.Explorer>
+﻿@model FishingCapstone.Models.Explorer
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout-Explorer.cshtml";
 }
 
-    <h1>Welcome!</h1>
-
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
 <table class="table">
-    <thead>
-        <tr>
-            @*<th>
-                @Html.DisplayNameFor(model => model.IdentityUser)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.IdentityUser.Id)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ExplorerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ExplorerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ExplorerId">Delete</a> |
-                <a asp-action="TripMap" asp-route-id="@item.ExplorerId">See Trips</a>
-            </td>
-        </tr>
-}
-    </tbody>
+    <tr>
+        <td>
+            <h1>Welcome! Let's get started...</h1>
+
+            <h4>
+                Find your next trophy by: <a asp-controller="Destinations" asp-action="Index" asp-route-id="1">Destination</a> |
+                <a asp-controller="Species" asp-action="Index" asp-route-id="1">Species</a> |
+                <a asp-controller="Months" asp-action="Index" asp-route-id="1">Month</a>
+            </h4>
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@Model.ExplorerId">Edit Account</a> |
+            <a asp-action="TripMap" asp-route-id="@Model.ExplorerId">See Trips</a>
+        </td>
+        <th></th>
+    </tr>
 </table>
+<div class="row">
+    <div class="column">
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="1"><img src="~/images/collage/amberjack.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="2"><img src="~/images/collage/barracuda.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="7"><img src="~/images/collage/kingmackeral.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="11"><img src="~/images/collage/blue-marlin.jpeg"></a>
+    </div>
+    <div class="column">
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="16"><img src="~/images/collage/roosterfish.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="9"><img src="~/images/collage/mahimahi.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="20"><img src="~/images/collage/snook.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="7"><img src="~/images/collage/jackcrevalle.jpeg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="4"><img src="~/images/collage/bonito.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="5"><img src="~/images/collage/cabrilla.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="8"><img src="~/images/collage/sierra.jpg"></a>
+    </div>
+    <div class="column">
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="18"><img src="~/images/collage/shark.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="12"><img src="~/images/collage/marlin-striped.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="21"><img src="~/images/collage/yellowfintuna.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="13"><img src="~/images/collage/marlin-white.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="15"><img src="~/images/collage/red-snapper.jpg"></a>
+    </div>
+    <div class="column">
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="23"><img src="~/images/collage/yellowtail.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="22"><img src="~/images/collage/wahoo.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="14"><img src="~/images/collage/pargo.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="17"><img src="~/images/collage/sailfish.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="5"><img src="~/images/collage/black_grouper.jpg"></a>
+        <a asp-controller="Species" asp-action="Calendar" asp-route-id="19"><img src="~/images/collage/skipjack.jpg"></a>
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="css/trendcrest.css" />

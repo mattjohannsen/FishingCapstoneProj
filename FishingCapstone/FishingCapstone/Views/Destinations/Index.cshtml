@@ -7,21 +7,12 @@
 
 <h1>Destinations</h1>
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
 <table class="table table-hover">
     <thead>
         <tr>
             <th scope="col">
                 @Html.DisplayNameFor(model => model.DestinationName)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.DestinationLat)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.DestinationLong)
-            </th>
+            </th scope="col">
             <th></th>
         </tr>
     </thead>
@@ -31,12 +22,6 @@
             <tr>
                 <td>
                     <a asp-action="Calendar" asp-route-id="@item.DestinationId">@Html.DisplayFor(modelItem => item.DestinationName)</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DestinationLat)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DestinationLong)
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.DestinationId">Details</a> |
