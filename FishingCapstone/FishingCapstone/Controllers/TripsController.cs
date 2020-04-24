@@ -142,7 +142,6 @@ namespace FishingCapstone.Controllers
             var explorer = _context.Explorer.Where(e => e.IdentityUser.Id == userId).FirstOrDefault();
             ViewData["ExplorerId"] = explorer.ExplorerId;
             ViewData["DestinationId"] = new SelectList(_context.Destination, "DestinationId", "DestinationName", trip.DestinationId);
-            //ViewData["ExplorerId"] = new SelectList(_context.Explorer, "ExplorerId", "ExplorerId", trip.ExplorerId);
             ViewData["TripMonthId"] = new SelectList(_context.Month, "MonthId", "MonthName", trip.TripMonthId);
             return View(trip);
         }

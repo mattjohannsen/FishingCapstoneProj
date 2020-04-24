@@ -16,14 +16,6 @@
             @Html.Hidden("ExplorerId")
             @Html.Hidden("DestinationId")
             @Html.Hidden("TripMonthId")
-            @*<div class="form-group">
-                <label asp-for="ExplorerId" class="control-label"></label>
-                <select asp-for="ExplorerId" class="form-control" asp-items="ViewBag.ExplorerId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="DestinationId" class="control-label"></label>
-                <select asp-for="DestinationId" class="form-control" asp-items="ViewBag.DestinationId"></select>
-            </div>*@
             <div class="form-group">
                 <label asp-for="TripName" class="control-label"></label>
                 <input asp-for="TripName" class="form-control" />
@@ -34,10 +26,6 @@
                 <input asp-for="TripGuideService" class="form-control" />
                 <span asp-validation-for="TripGuideService" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="TripMonthId" class="control-label"></label>
-                <select asp-for="TripMonthId" class="form-control" asp-items="ViewBag.TripMonthId"></select>
-            </div>*@
             <div class="form-group">
                 <label asp-for="TripStart" class="control-label"></label>
                 <input asp-for="TripStart" class="form-control" />

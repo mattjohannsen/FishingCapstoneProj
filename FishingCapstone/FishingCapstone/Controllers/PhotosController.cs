@@ -26,14 +26,6 @@ namespace FishingCapstone.Controllers
             _context = context;
             webHostEnvironment = hostEnvironment;
         }
-
-        // GET: Photos
-        //public async Task<IActionResult> Index()
-        //{
-        //    var applicationDbContext = _context.Photos.Include(p => p.Trip);
-
-        //    return View(await applicationDbContext.ToListAsync());
-        //}
         public  IActionResult Index()
         {
             var photos =  _context.Photos.Where(p=>p.Trip.ExplorerId == GetCurrentExplorer().ExplorerId)
@@ -45,7 +37,6 @@ namespace FishingCapstone.Controllers
 
         public IActionResult New()
         {
-            //ViewData["PhotoTripId"] = new SelectList(_context.Trip, "TripId", "TripName");
             ViewData["PhotoTripId"] = new SelectList(_context.Trip.Where(t=>t.ExplorerId == GetCurrentExplorer().ExplorerId), "TripId", "TripName");
             return View();
         }
@@ -114,17 +105,6 @@ namespace FishingCapstone.Controllers
             {
                 return NotFound();
             }
-
-            //var photoPath = "wwwroot/images/" + photos.PhotoFile;
-            //var gps = ImageMetadataReader.ReadMetadata(photoPath)
-            //                 .OfType<GpsDirectory>()
-            //                 .FirstOrDefault();
-            //var location = gps.GetGeoLocation();
-            //var photoLat = location.Latitude;
-            //var photoLong = location.Longitude;
-            //var directories = ImageMetadataReader.ReadMetadata(photoPath);
-            //var subIfdDirectory = directories.OfType<ExifSubIfdDirectory>().FirstOrDefault();
-            //var photoDate = subIfdDirectory?.GetDescription(ExifDirectoryBase.TagDateTimeOriginal);
             return View(photos);
         }
 

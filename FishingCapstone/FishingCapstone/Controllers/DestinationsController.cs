@@ -343,32 +343,5 @@ namespace FishingCapstone.Controllers
             thisDestination.DestinationComparision.CompareChart = compareChart;
             return compareChart;
         }
-        //public List<DestSpeciesMonth> GetDSMByDestination(int id)
-        //{
-        //    var destination = _context.Destination.Where(d => d.DestinationId == id);
-        //    var dsmrAvailableSpecies = new List<DestSpeciesMonth>();
-        //    if (destination != null)
-        //    {
-        //        dsmrAvailableSpecies = _context.DestSpeciesMonth.Where(d => d.DSMDestinationId == id).OrderBy(d=>d.Species.SpeciesName).ThenBy(d=>d.DSMMonthId).Select(d => d).ToList(); //<==Working list that gives Species
-        //            for (int i = 0; i < dsmrAvailableSpecies.Count; i++)
-        //            {
-        //                if (dsmrAvailableSpecies[i].Month==null)
-        //                {
-        //                var dsmrMonth = _context.Month.Where(m => m.MonthId == dsmrAvailableSpecies[i].DSMMonthId).FirstOrDefault();
-        //                dsmrAvailableSpecies[i].Month = dsmrMonth;
-        //                }
-        //                if (dsmrAvailableSpecies[i].Rating == null)
-        //                {
-        //                var dsmrRating = _context.Rating.Where(m => m.RatingId == dsmrAvailableSpecies[i].DSMRatingId).FirstOrDefault();
-        //                dsmrAvailableSpecies[i].Rating = dsmrRating;
-        //                }
-        //            }
-        //        return dsmrAvailableSpecies;
-        //    }
-        //    else
-        //    {
-        //        return dsmrAvailableSpecies;
-        //    }
-        //}
     }
 }
