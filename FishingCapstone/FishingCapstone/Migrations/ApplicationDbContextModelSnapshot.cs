@@ -5473,6 +5473,24 @@ namespace FishingCapstone.Migrations
                             SpeciesId = 23,
                             SpeciesName = "Yellowtail",
                             Thumbnail = "yellowtail.jpg"
+                        },
+                        new
+                        {
+                            SpeciesId = 24,
+                            SpeciesName = "Bonefish",
+                            Thumbnail = "bonefish.jpg"
+                        },
+                        new
+                        {
+                            SpeciesId = 25,
+                            SpeciesName = "Permit",
+                            Thumbnail = "permit.jpg"
+                        },
+                        new
+                        {
+                            SpeciesId = 26,
+                            SpeciesName = "Tarpon",
+                            Thumbnail = "tarpon.jpg"
                         });
                 });
 
@@ -5544,15 +5562,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0891ea18-9d40-41fe-a321-046e571f2a10",
-                            ConcurrencyStamp = "806f8514-82a8-4b8a-b2e0-cca845740846",
+                            Id = "a434e253-d6cc-4d2e-a1bb-26d124f17cc5",
+                            ConcurrencyStamp = "74a8458f-e8d6-419c-bc50-c3314ec9ce92",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "1d45c4a6-2f61-4378-93d8-6e0b183215a8",
-                            ConcurrencyStamp = "28de573c-c9b7-4223-a260-2a3daf82ae14",
+                            Id = "a362370b-d16b-4f90-a3d3-51ddbca7ea40",
+                            ConcurrencyStamp = "06f7cad6-434b-412b-92d6-91b7feb323b3",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

@@ -85,7 +85,10 @@ namespace FishingCapstone.Data
                     new Species { SpeciesId = 20, SpeciesName = "Snook", Thumbnail = "snook.jpg" },
                     new Species { SpeciesId = 21, SpeciesName = "Tuna", Thumbnail = "tunayellowfin.jpg" },
                     new Species { SpeciesId = 22, SpeciesName = "Wahoo", Thumbnail = "wahoo.jpg" },
-                    new Species { SpeciesId = 23, SpeciesName = "Yellowtail", Thumbnail = "yellowtail.jpg" }
+                    new Species { SpeciesId = 23, SpeciesName = "Yellowtail", Thumbnail = "yellowtail.jpg" },
+                    new Species { SpeciesId = 24, SpeciesName = "Bonefish", Thumbnail = "bonefish.jpg" },
+                    new Species { SpeciesId = 25, SpeciesName = "Permit", Thumbnail = "permit.jpg" },
+                    new Species { SpeciesId = 26, SpeciesName = "Tarpon", Thumbnail = "tarpon.jpg" }
                 );
             builder.Entity<DestSpeciesMonth>()
                 .HasData(
