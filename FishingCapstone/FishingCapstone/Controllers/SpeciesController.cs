@@ -22,7 +22,9 @@ namespace FishingCapstone.Controllers
         // GET: Species
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Species.ToListAsync());
+            return View(await _context.Species
+                .OrderBy(s=>s.SpeciesName)
+                .ToListAsync());
         }
 
         // GET: Species/Details/5
