@@ -683,9 +683,9 @@ namespace FishingCapstone.Data
                     new DestSpeciesMonth { DestSpeciesMonthId = 589, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 1, DSMRatingId = 1 },	//West Bend	January
                     new DestSpeciesMonth { DestSpeciesMonthId = 590, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 2, DSMRatingId = 1 },	//West Bend	February
                     new DestSpeciesMonth { DestSpeciesMonthId = 591, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 3, DSMRatingId = 1 },	//West Bend	March
-                    new DestSpeciesMonth { DestSpeciesMonthId = 592, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 4, DSMRatingId = 4 },	//West Bend	April
+                    new DestSpeciesMonth { DestSpeciesMonthId = 592, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 4, DSMRatingId = 1 },	//West Bend	April
                     new DestSpeciesMonth { DestSpeciesMonthId = 593, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 5, DSMRatingId = 1 },	//West Bend	May
-                    new DestSpeciesMonth { DestSpeciesMonthId = 594, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 6, DSMRatingId = 1 },	//West Bend	June
+                    new DestSpeciesMonth { DestSpeciesMonthId = 594, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 6, DSMRatingId = 4 },	//West Bend	June
                     new DestSpeciesMonth { DestSpeciesMonthId = 595, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 7, DSMRatingId = 1 },	//West Bend	July
                     new DestSpeciesMonth { DestSpeciesMonthId = 596, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 8, DSMRatingId = 1 },	//West Bend	August
                     new DestSpeciesMonth { DestSpeciesMonthId = 597, DSMDestinationId = 4, DSMSpeciesId = 11, DSMMonthId = 9, DSMRatingId = 1 },	//West Bend	September
@@ -695,9 +695,9 @@ namespace FishingCapstone.Data
                     new DestSpeciesMonth { DestSpeciesMonthId = 601, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 1, DSMRatingId = 1 },	//Newburg	January
                     new DestSpeciesMonth { DestSpeciesMonthId = 602, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 2, DSMRatingId = 1 },	//Newburg	February
                     new DestSpeciesMonth { DestSpeciesMonthId = 603, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 3, DSMRatingId = 1 },	//Newburg	March
-                    new DestSpeciesMonth { DestSpeciesMonthId = 604, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 4, DSMRatingId = 4 },	//Newburg	April
+                    new DestSpeciesMonth { DestSpeciesMonthId = 604, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 4, DSMRatingId = 1 },	//Newburg	April
                     new DestSpeciesMonth { DestSpeciesMonthId = 605, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 5, DSMRatingId = 1 },	//Newburg	May
-                    new DestSpeciesMonth { DestSpeciesMonthId = 606, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 6, DSMRatingId = 1 },	//Newburg	June
+                    new DestSpeciesMonth { DestSpeciesMonthId = 606, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 6, DSMRatingId = 4 },	//Newburg	June
                     new DestSpeciesMonth { DestSpeciesMonthId = 607, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 7, DSMRatingId = 1 },	//Newburg	July
                     new DestSpeciesMonth { DestSpeciesMonthId = 608, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 8, DSMRatingId = 1 },	//Newburg	August
                     new DestSpeciesMonth { DestSpeciesMonthId = 609, DSMDestinationId = 5, DSMSpeciesId = 11, DSMMonthId = 9, DSMRatingId = 1 },	//Newburg	September
@@ -707,9 +707,9 @@ namespace FishingCapstone.Data
                     new DestSpeciesMonth { DestSpeciesMonthId = 613, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 1, DSMRatingId = 1 },	//Fredonia	January
                     new DestSpeciesMonth { DestSpeciesMonthId = 614, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 2, DSMRatingId = 1 },	//Fredonia	February
                     new DestSpeciesMonth { DestSpeciesMonthId = 615, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 3, DSMRatingId = 1 },	//Fredonia	March
-                    new DestSpeciesMonth { DestSpeciesMonthId = 616, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 4, DSMRatingId = 4 },	//Fredonia	April
+                    new DestSpeciesMonth { DestSpeciesMonthId = 616, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 4, DSMRatingId = 1 },	//Fredonia	April
                     new DestSpeciesMonth { DestSpeciesMonthId = 617, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 5, DSMRatingId = 1 },	//Fredonia	May
-                    new DestSpeciesMonth { DestSpeciesMonthId = 618, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 6, DSMRatingId = 1 },	//Fredonia	June
+                    new DestSpeciesMonth { DestSpeciesMonthId = 618, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 6, DSMRatingId = 4 },	//Fredonia	June
                     new DestSpeciesMonth { DestSpeciesMonthId = 619, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 7, DSMRatingId = 1 },	//Fredonia	July
                     new DestSpeciesMonth { DestSpeciesMonthId = 620, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 8, DSMRatingId = 1 },	//Fredonia	August
                     new DestSpeciesMonth { DestSpeciesMonthId = 621, DSMDestinationId = 6, DSMSpeciesId = 11, DSMMonthId = 9, DSMRatingId = 1 },	//Fredonia	September
