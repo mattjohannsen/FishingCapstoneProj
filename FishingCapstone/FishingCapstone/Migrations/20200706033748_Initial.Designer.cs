@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishingCapstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200628193338_Initial")]
+    [Migration("20200706033748_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3")
+                .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -7803,15 +7803,15 @@ namespace FishingCapstone.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6660616e-23a2-4901-b92f-6b33fe2dd850",
-                            ConcurrencyStamp = "088a6cc0-f676-46ce-a93c-2f0f4fe6cd34",
+                            Id = "6fafc91c-e03d-41f1-9e75-b43949212bba",
+                            ConcurrencyStamp = "6af7c74f-6780-4692-a508-bf6d72b95594",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "ac1be369-b79b-4663-8f01-91237f372ab5",
-                            ConcurrencyStamp = "27e4b026-cb15-460f-84ba-3944c9f539df",
+                            Id = "3501879f-0f47-4622-b199-355ab07c4741",
+                            ConcurrencyStamp = "1440a410-2770-4f35-b194-a495948c5289",
                             Name = "Explorer",
                             NormalizedName = "EXPLORER"
                         });

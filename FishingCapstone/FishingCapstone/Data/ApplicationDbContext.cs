@@ -39,6 +39,8 @@ namespace FishingCapstone.Data
                     new Destination { DestinationId = 5, DestinationName = "Newburg, WI", DestinationLat = "43.4317", DestinationLong = "-88.0465" },
                     new Destination { DestinationId = 6, DestinationName = "Fredonia WI", DestinationLat = "43.4706", DestinationLong = "-87.9506" },
                     new Destination { DestinationId = 7, DestinationName = "Islamorada, FL", DestinationLat = "24.898941", DestinationLong = "-80.658778" }
+                    //new Destination { DestinationId = 8, DestinationName = "Hatteras, NC", DestinationLat = "35.218393", DestinationLong = "-75.695943" }
+
                 );
             builder.Entity<Month>()
                 .HasData(
